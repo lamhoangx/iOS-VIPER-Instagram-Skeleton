@@ -3,6 +3,28 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "__pthread_kill:(null)">
+      </ContextState>
+      <ContextState
+         contextName = "SearchView.setLeftAlignedNavigationItemTitle(text:color:margin:):SearchView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "navigationItem.leftBarButtonItem?.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SearchView.setupNavigationBar():SearchView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "navigationController?.navigationBar.frame.width">
+            </PersistentString>
+            <PersistentString
+               value = "navigationController?.navigationBar.frame.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MainTabView.viewDidLoad():MainTabView.swift">
          <PersistentStrings>
             <PersistentString

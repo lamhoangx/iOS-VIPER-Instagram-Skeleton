@@ -15,8 +15,9 @@ class NotificationView: UIViewController, NotificationViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        setupNavigationBar()
         presenter?.viewDidLoad()
+        
         activityIndicator = ViewUtils.requestIndicatorLoading(target: view)
         
     }
@@ -27,6 +28,29 @@ class NotificationView: UIViewController, NotificationViewProtocol {
 //            indicator.removeFromSuperview()
 //        }
 //        activityIndicator = nil
+    }
+    
+    private func setupNavigationBar() {
+        let leftTitle = UIBarButtonItem(customView: createTitleLabel())
+        navigationItem.leftBarButtonItem = leftTitle
+    }
+    
+    private func createTitleLabel() -> UILabel {
+        let label = UILabel(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: navigationController?.navigationBar.frame.width ?? 0,
+                height: navigationController?.navigationBar.frame.height ?? 0)
+        )
+        label.text = "Activity"
+        label.font = .boldSystemFont(ofSize: 18)
+
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(searchLeftBarLableSelected))
+//        labelSearch.isUserInteractionEnabled = true
+//        labelSearch.addGestureRecognizer(tap)
+        
+        return label
     }
 }
 

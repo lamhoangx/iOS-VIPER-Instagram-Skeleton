@@ -17,12 +17,14 @@ class MainTabView: UITabBarController, UITabBarControllerDelegate, MainTabViewPr
         view.backgroundColor = .white
         
         self.delegate = self
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         presenter?.prepare()
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
     }
     
 }

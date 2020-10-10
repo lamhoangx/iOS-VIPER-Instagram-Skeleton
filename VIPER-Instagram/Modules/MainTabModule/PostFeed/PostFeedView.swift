@@ -15,7 +15,7 @@ class PostFeedView: UIViewController, PostFeedViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         presenter?.viewDidLoad()
         activityIndicator = ViewUtils.requestIndicatorLoading(target: view)
         

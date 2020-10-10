@@ -16,8 +16,9 @@ class SearchView: UIViewController, SearchViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        setupNavigationBar()
         presenter?.viewDidLoad()
+        
         activityIndicator = ViewUtils.requestIndicatorLoading(target: view)
         
     }
@@ -29,6 +30,35 @@ class SearchView: UIViewController, SearchViewProtocol {
 //        }
 //        activityIndicator = nil
     }
+    
+    private func setupNavigationBar() {
+        let searchLeftBarButtton = UIBarButtonItem(image: #imageLiteral(resourceName: "Search"), style: .plain, target: self, action: #selector(searchLeftBarButtonSelected))
+        let leftTitle = UIBarButtonItem(customView: createLabelSearch())
+        navigationItem.leftBarButtonItems = [searchLeftBarButtton, leftTitle]
+    }
+    
+    @objc func searchLeftBarButtonSelected() {
+        print("searchLeftBarButtonSelected")
+    }
+    
+    private func createLabelSearch() -> UILabel {
+        let labelSearch = UILabel(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: navigationController?.navigationBar.frame.width ?? 0,
+                height: navigationController?.navigationBar.frame.height ?? 0)
+        )
+        labelSearch.text = "Search"
+        labelSearch.textColor = .gray
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(searchLeftBarButtonSelected))
+        labelSearch.isUserInteractionEnabled = true
+        labelSearch.addGestureRecognizer(tap)
+        
+        return labelSearch
+    }
+    
 }
 
 // MARK: Presenter -> View

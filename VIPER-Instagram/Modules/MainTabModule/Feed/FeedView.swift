@@ -15,6 +15,8 @@ class FeedView: UIViewController, FeedViewProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNavigationBar()
                 
         presenter?.viewDidLoad()
         activityIndicator = ViewUtils.requestIndicatorLoading(target: view)
@@ -27,6 +29,25 @@ class FeedView: UIViewController, FeedViewProtocol {
 //            indicator.removeFromSuperview()
 //        }
 //        activityIndicator = nil
+    }
+    
+    private func setupNavigationBar() {
+        let cameraLeftBarButtton = UIBarButtonItem(image: #imageLiteral(resourceName: "camera"), style: .plain, target: self, action: #selector(cameraLeftBarButtonSelected))
+        let logoLeftBarButton = UIBarButtonItem(customView: UIImageView(image: #imageLiteral(resourceName: "instagram_logo")))
+        
+        navigationItem.leftBarButtonItems = [
+            cameraLeftBarButtton,
+            logoLeftBarButton
+        ]
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "send_tabbar_icon"), style: .plain, target: self, action: #selector(messageSelected))
+    }
+    
+    @objc func cameraLeftBarButtonSelected() {
+        print("cameraLeftBarButtonSelected")
+    }
+    @objc func messageSelected() {
+        print("messageSelected")
     }
 }
 
