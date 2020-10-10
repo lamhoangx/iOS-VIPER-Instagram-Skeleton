@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		C9536FE12531873500ED53CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9536FE02531873500ED53CA /* AppDelegate.swift */; };
 		C9536FE32531873500ED53CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9536FE22531873500ED53CA /* SceneDelegate.swift */; };
-		C9536FE52531873500ED53CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9536FE42531873500ED53CA /* ViewController.swift */; };
-		C9536FE82531873500ED53CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9536FE62531873500ED53CA /* Main.storyboard */; };
 		C9536FEB2531873500ED53CA /* VIPER_Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9536FE92531873500ED53CA /* VIPER_Instagram.xcdatamodeld */; };
 		C9536FED2531873800ED53CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9536FEC2531873800ED53CA /* Assets.xcassets */; };
 		C9536FF02531873800ED53CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9536FEE2531873800ED53CA /* LaunchScreen.storyboard */; };
@@ -89,8 +87,6 @@
 		C9536FDD2531873500ED53CA /* VIPER-Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER-Instagram.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9536FE02531873500ED53CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9536FE22531873500ED53CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C9536FE42531873500ED53CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C9536FE72531873500ED53CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C9536FEA2531873500ED53CA /* VIPER_Instagram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VIPER_Instagram.xcdatamodel; sourceTree = "<group>"; };
 		C9536FEC2531873800ED53CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9536FEF2531873800ED53CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -208,8 +204,6 @@
 				C953701625318BF200ED53CA /* Modules */,
 				C9536FE02531873500ED53CA /* AppDelegate.swift */,
 				C9536FE22531873500ED53CA /* SceneDelegate.swift */,
-				C9536FE42531873500ED53CA /* ViewController.swift */,
-				C9536FE62531873500ED53CA /* Main.storyboard */,
 				C9536FEC2531873800ED53CA /* Assets.xcassets */,
 				C9536FEE2531873800ED53CA /* LaunchScreen.storyboard */,
 				C9536FF12531873800ED53CA /* Info.plist */,
@@ -514,7 +508,6 @@
 			files = (
 				C9536FF02531873800ED53CA /* LaunchScreen.storyboard in Resources */,
 				C9536FED2531873800ED53CA /* Assets.xcassets in Resources */,
-				C9536FE82531873500ED53CA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +537,6 @@
 				C953708F2531BC7400ED53CA /* FeedRouter.swift in Sources */,
 				C95370EB2531C04C00ED53CA /* TimelineProtocol.swift in Sources */,
 				C95370902531BC7400ED53CA /* FeedInteractor.swift in Sources */,
-				C9536FE52531873500ED53CA /* ViewController.swift in Sources */,
 				C95370A12531BCC800ED53CA /* SearchRouter.swift in Sources */,
 				C95370A52531BCC800ED53CA /* SearchDataManager.swift in Sources */,
 				C95370D92531C03D00ED53CA /* UserProfileRouter.swift in Sources */,
@@ -628,14 +620,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C9536FE62531873500ED53CA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9536FE72531873500ED53CA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C9536FEE2531873800ED53CA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
