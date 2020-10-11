@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Router
 protocol FeedRouterProtocol: class {
-    static func buildFeedView() -> UIViewController?
+    static func buildFeedView() -> UICollectionViewController?
 
     // func for redirect
 

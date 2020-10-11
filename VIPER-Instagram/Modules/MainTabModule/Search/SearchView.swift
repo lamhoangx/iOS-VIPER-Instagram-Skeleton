@@ -8,27 +8,20 @@
 import Foundation
 import UIKit
 
-class SearchView: UIViewController, SearchViewProtocol {
+class SearchView: UIRefreshableController, SearchViewProtocol {
 
     var presenter: SearchPresenterProtocol?
-
-    var activityIndicator: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         presenter?.viewDidLoad()
         
-        activityIndicator = ViewUtils.requestIndicatorLoading(target: view)
-        
+        showUILazyLoading()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if let indicator = activityIndicator {
-//            indicator.stopAnimating()
-//            indicator.removeFromSuperview()
-//        }
-//        activityIndicator = nil
+        dismissUILazyLoading()
     }
     
     private func setupNavigationBar() {
@@ -39,6 +32,10 @@ class SearchView: UIViewController, SearchViewProtocol {
     
     @objc func searchLeftBarButtonSelected() {
         print("searchLeftBarButtonSelected")
+    }
+    
+    override func handleActionRefreshControl() {
+        endRefreshControl()
     }
     
     private func createLabelSearch() -> UILabel {

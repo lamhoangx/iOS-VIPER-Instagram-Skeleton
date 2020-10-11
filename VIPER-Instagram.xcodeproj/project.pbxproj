@@ -66,6 +66,7 @@
 		C95370FB2531C06400ED53CA /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95370F52531C06400ED53CA /* LoginDataManager.swift */; };
 		C95371072532E32800ED53CA /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371062532E32800ED53CA /* FeedModel.swift */; };
 		C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953710E2532E35700ED53CA /* FeedViewModel.swift */; };
+		C95371182533730700ED53CA /* UIRefreshableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371172533730700ED53CA /* UIRefreshableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		C95370F52531C06400ED53CA /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		C95371062532E32800ED53CA /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		C953710E2532E35700ED53CA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		C95371172533730700ED53CA /* UIRefreshableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 		C9536FDF2531873500ED53CA /* VIPER-Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				C9537116253372C000ED53CA /* extension */,
 				C953702B253195CD00ED53CA /* DataManager */,
 				C953701925318C2000ED53CA /* Utils */,
 				C953701825318C0500ED53CA /* ViewModel */,
@@ -417,6 +420,14 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
+		C9537116253372C000ED53CA /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				C95371172533730700ED53CA /* UIRefreshableController.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -564,6 +575,7 @@
 				C95370B62531BCE100ED53CA /* PostFeedProtocol.swift in Sources */,
 				C9537027253195BE00ED53CA /* MainTabDataManager.swift in Sources */,
 				C95370B32531BCE100ED53CA /* PostFeedRouter.swift in Sources */,
+				C95371182533730700ED53CA /* UIRefreshableController.swift in Sources */,
 				C9536FE12531873500ED53CA /* AppDelegate.swift in Sources */,
 				C9537025253195BE00ED53CA /* MainTabView.swift in Sources */,
 				C95370F82531C06400ED53CA /* LoginInteractor.swift in Sources */,

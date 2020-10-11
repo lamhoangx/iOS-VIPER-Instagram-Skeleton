@@ -8,31 +8,31 @@
 import Foundation
 import UIKit
 
-class NotificationView: UIViewController, NotificationViewProtocol {
+class NotificationView: UIRefreshableController, NotificationViewProtocol {    
 
     var presenter: NotificationPresenterProtocol?
-    var activityIndicator: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         presenter?.viewDidLoad()
         
-        activityIndicator = ViewUtils.requestIndicatorLoading(target: view)
+        showUILazyLoading()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if let indicator = activityIndicator {
-//            indicator.stopAnimating()
-//            indicator.removeFromSuperview()
-//        }
-//        activityIndicator = nil
+        dismissUILazyLoading()
     }
     
     private func setupNavigationBar() {
         let leftTitle = UIBarButtonItem(customView: createTitleLabel())
         navigationItem.leftBarButtonItem = leftTitle
+    }
+    
+    override func handleActionRefreshControl() {
+        
+        endRefreshControl()
     }
     
     private func createTitleLabel() -> UILabel {
@@ -45,11 +45,6 @@ class NotificationView: UIViewController, NotificationViewProtocol {
         )
         label.text = "Activity"
         label.font = .boldSystemFont(ofSize: 18)
-
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(searchLeftBarLableSelected))
-//        labelSearch.isUserInteractionEnabled = true
-//        labelSearch.addGestureRecognizer(tap)
-        
         return label
     }
 }

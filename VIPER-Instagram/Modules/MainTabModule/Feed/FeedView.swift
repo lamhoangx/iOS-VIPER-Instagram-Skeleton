@@ -8,27 +8,21 @@
 import Foundation
 import UIKit
 
-class FeedView: UIViewController, FeedViewProtocol {
+class FeedView: UIRefreshableController, FeedViewProtocol {
 
     var presenter: FeedPresenterProtocol?
-    var activityIndicator: UIActivityIndicatorView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupNavigationBar()
-                
         presenter?.viewDidLoad()
-        activityIndicator = ViewUtils.requestIndicatorLoading(target: view)
+        
+        showUILazyLoading()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if let indicator = activityIndicator {
-//            indicator.stopAnimating()
-//            indicator.removeFromSuperview()
-//        }
-//        activityIndicator = nil
+        dismissUILazyLoading()
     }
     
     private func setupNavigationBar() {
@@ -49,6 +43,11 @@ class FeedView: UIViewController, FeedViewProtocol {
     @objc func messageSelected() {
         print("messageSelected")
     }
+    
+    @objc override func handleActionRefreshControl() {
+        endRefreshControl()
+    }
+    
 }
 
 // MARK: Presenter -> View

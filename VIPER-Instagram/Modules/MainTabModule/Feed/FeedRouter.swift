@@ -10,7 +10,7 @@ import UIKit
 
 class FeedRouter: FeedRouterProtocol {
 
-    class func buildFeedView() -> UIViewController? {
+    class func buildFeedView() -> UICollectionViewController? {
         let navController = getFeedView()
         if let view = navController as? (FeedViewProtocol & FeedPresenterDelegate) {
             let presenter = FeedPresenter()
@@ -35,10 +35,8 @@ class FeedRouter: FeedRouterProtocol {
         return nil
     }
 
-    static private func getFeedView() -> UIViewController? {
-        var view: UIViewController?
+    static private func getFeedView() -> UICollectionViewController? {
         // Change $view if necessary
-        view = FeedView()
-        return view
+        return FeedView()
     }
 }

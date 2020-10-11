@@ -44,7 +44,7 @@ class PostFeedView: UIViewController, PostFeedViewProtocol {
                 width: navigationController?.navigationBar.frame.width ?? 0,
                 height: navigationController?.navigationBar.frame.height ?? 0)
         )
-        labelSearch.text = "Gallery"
+        labelSearch.text = "Gallery ▼"
         labelSearch.textColor = .gray
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(postFeedGallerySelected))
