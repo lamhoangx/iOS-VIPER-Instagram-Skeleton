@@ -3,17 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "__pthread_kill:(null)">
-      </ContextState>
-      <ContextState
-         contextName = "SearchView.setLeftAlignedNavigationItemTitle(text:color:margin:):SearchView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "navigationItem.leftBarButtonItem?.width">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "SearchView.setupNavigationBar():SearchView.swift">
          <PersistentStrings>
             <PersistentString
@@ -25,10 +14,48 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "__pthread_kill:(null)">
+      </ContextState>
+      <ContextState
+         contextName = "SearchView.setLeftAlignedNavigationItemTitle(text:color:margin:):SearchView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "navigationItem.leftBarButtonItem?.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MainTabView.viewDidLoad():MainTabView.swift">
          <PersistentStrings>
             <PersistentString
                value = "presenter">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainTabView.tabBarController(_:shouldSelect:):MainTabView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tabBarController.selectedIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainTabPresenter.shouldTabSelect(viewController:):MainTabPresenter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewNavControllers.firstIndex(of: viewController as! UINavigationController)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainTabPresenter.initMainTabNavControllers():MainTabPresenter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "feedView">
+            </PersistentString>
+            <PersistentString
+               value = "view">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

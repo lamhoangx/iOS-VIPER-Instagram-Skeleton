@@ -23,10 +23,12 @@ class MainTabView: UITabBarController, UITabBarControllerDelegate, MainTabViewPr
         presenter?.prepare()
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if let presenter = presenter {
+            return presenter.shouldTabSelect(viewNavController: viewController as! UINavigationController)
+        }
+        return true
     }
-    
 }
 
 // MARK: Presenter -> View

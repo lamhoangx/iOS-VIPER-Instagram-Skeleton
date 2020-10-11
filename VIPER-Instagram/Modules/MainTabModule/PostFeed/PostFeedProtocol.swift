@@ -8,12 +8,17 @@
 import Foundation
 import UIKit
 
+// Delegate
+protocol PostFeedDelegate: class {
+    func feedDidPost(_ feed: FeedViewModel)
+}
+
 // MARK: Router
 protocol PostFeedRouterProtocol: class {
     static func buildPostFeedView() -> UIViewController?
 
     // func for redirect
-
+    func dismiss(from viewController: UIViewController, completion: (() -> Void)?)
 }
 
 // MARK: View

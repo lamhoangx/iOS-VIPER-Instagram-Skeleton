@@ -41,4 +41,8 @@ class PostFeedRouter: PostFeedRouterProtocol {
         view = PostFeedView()
         return view
     }
+    
+    func dismiss(from viewController: UIViewController, completion: (() -> Void)?){
+        viewController.dismiss(animated: true, completion: completion)
+    }
 }

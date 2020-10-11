@@ -42,4 +42,10 @@ class MainTabRouter: MainTabRouterProtocol {
         return tabBar
     }
 
+    func present(from viewController: UIViewController, with delegate: PostFeedDelegate, target desViewController: UIViewController) {
+        if let navController = desViewController as? UINavigationController {
+            navController.navigationBar.tintColor = .black
+        }
+        viewController.present(desViewController, animated: true, completion: nil)
+    }
 }

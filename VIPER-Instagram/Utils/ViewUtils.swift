@@ -30,10 +30,16 @@ class ViewUtils {
     static func createNavController(
         unselectedImage: UIImage,
         selectedImage: UIImage,
-        rootViewController: UIViewController = UIViewController()
+        rootViewController: UIViewController?
     ) -> UINavigationController {
         // construct nav controller
-        let navController = UINavigationController(rootViewController: rootViewController)
+        let navController: UINavigationController
+        if ((rootViewController) != nil) {
+            navController = UINavigationController(rootViewController: rootViewController!)
+        } else {
+            navController = UINavigationController()
+        }
+        
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage
         navController.navigationBar.tintColor = .black

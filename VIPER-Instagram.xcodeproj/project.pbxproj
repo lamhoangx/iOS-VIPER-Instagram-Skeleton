@@ -64,6 +64,8 @@
 		C95370F92531C06400ED53CA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95370F32531C06400ED53CA /* LoginView.swift */; };
 		C95370FA2531C06400ED53CA /* LoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95370F42531C06400ED53CA /* LoginProtocol.swift */; };
 		C95370FB2531C06400ED53CA /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95370F52531C06400ED53CA /* LoginDataManager.swift */; };
+		C95371072532E32800ED53CA /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371062532E32800ED53CA /* FeedModel.swift */; };
+		C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953710E2532E35700ED53CA /* FeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,8 @@
 		C95370F32531C06400ED53CA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C95370F42531C06400ED53CA /* LoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProtocol.swift; sourceTree = "<group>"; };
 		C95370F52531C06400ED53CA /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
+		C95371062532E32800ED53CA /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		C953710E2532E35700ED53CA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,7 +203,7 @@
 			children = (
 				C953702B253195CD00ED53CA /* DataManager */,
 				C953701925318C2000ED53CA /* Utils */,
-				C953701825318C0500ED53CA /* ModelView */,
+				C953701825318C0500ED53CA /* ViewModel */,
 				C953701725318BF900ED53CA /* Model */,
 				C953701625318BF200ED53CA /* Modules */,
 				C9536FE02531873500ED53CA /* AppDelegate.swift */,
@@ -245,15 +249,16 @@
 		C953701725318BF900ED53CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C95371052532E30500ED53CA /* Feed */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		C953701825318C0500ED53CA /* ModelView */ = {
+		C953701825318C0500ED53CA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ModelView;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C953701925318C2000ED53CA /* Utils */ = {
@@ -403,6 +408,15 @@
 			path = UserProfile;
 			sourceTree = "<group>";
 		};
+		C95371052532E30500ED53CA /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				C95371062532E32800ED53CA /* FeedModel.swift */,
+				C953710E2532E35700ED53CA /* FeedViewModel.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -533,9 +547,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95370EC2531C04C00ED53CA /* TimelineDataManager.swift in Sources */,
+				C95371072532E32800ED53CA /* FeedModel.swift in Sources */,
 				C95370FB2531C06400ED53CA /* LoginDataManager.swift in Sources */,
 				C953708F2531BC7400ED53CA /* FeedRouter.swift in Sources */,
 				C95370EB2531C04C00ED53CA /* TimelineProtocol.swift in Sources */,
+				C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */,
 				C95370902531BC7400ED53CA /* FeedInteractor.swift in Sources */,
 				C95370A12531BCC800ED53CA /* SearchRouter.swift in Sources */,
 				C95370A52531BCC800ED53CA /* SearchDataManager.swift in Sources */,

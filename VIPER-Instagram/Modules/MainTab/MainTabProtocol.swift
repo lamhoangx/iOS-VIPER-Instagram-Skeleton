@@ -13,7 +13,7 @@ protocol MainTabRouterProtocol: class {
     static func buildMainTabView() -> UITabBarController?
 
     // func for redirect
-
+    func present(from: UIViewController, with delegate: PostFeedDelegate, target desViewController: UIViewController)
 }
 
 // MARK: View
@@ -24,6 +24,7 @@ protocol MainTabViewProtocol: class {
     
     
 }
+
 protocol MainTabPresenterDelegate {
     func presenterDidLoad()
     func tabsControllerDidLoad(_ controllers: [UINavigationController])
@@ -35,8 +36,9 @@ protocol MainTabPresenterProtocol: class {
     var view: (MainTabPresenterDelegate & MainTabViewProtocol)? { get set }
     var interactor: MainTabInteractorProtocol? { get set }
 
-    // func for presenter -> interactor
+    // func for view -> presenter
     func prepare()
+    func shouldTabSelect(viewNavController: UINavigationController) -> Bool
 }
 // Extends by presenter to receive notifies from interactor
 protocol MainTabInteractorDelegate: class {
