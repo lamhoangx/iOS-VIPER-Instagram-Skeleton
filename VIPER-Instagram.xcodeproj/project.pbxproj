@@ -67,6 +67,7 @@
 		C95371072532E32800ED53CA /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371062532E32800ED53CA /* FeedModel.swift */; };
 		C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953710E2532E35700ED53CA /* FeedViewModel.swift */; };
 		C95371182533730700ED53CA /* UIRefreshableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371172533730700ED53CA /* UIRefreshableController.swift */; };
+		C953712E253439E500ED53CA /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		C95371062532E32800ED53CA /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		C953710E2532E35700ED53CA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		C95371172533730700ED53CA /* UIRefreshableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshableController.swift; sourceTree = "<group>"; };
+		C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +208,6 @@
 				C9537116253372C000ED53CA /* extension */,
 				C953702B253195CD00ED53CA /* DataManager */,
 				C953701925318C2000ED53CA /* Utils */,
-				C953701825318C0500ED53CA /* ViewModel */,
 				C953701725318BF900ED53CA /* Model */,
 				C953701625318BF200ED53CA /* Modules */,
 				C9536FE02531873500ED53CA /* AppDelegate.swift */,
@@ -255,13 +256,6 @@
 				C95371052532E30500ED53CA /* Feed */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C953701825318C0500ED53CA /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C953701925318C2000ED53CA /* Utils */ = {
@@ -416,6 +410,7 @@
 			children = (
 				C95371062532E32800ED53CA /* FeedModel.swift */,
 				C953710E2532E35700ED53CA /* FeedViewModel.swift */,
+				C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -601,6 +596,7 @@
 				C95370D82531C03D00ED53CA /* UserProfilePresenter.swift in Sources */,
 				C95370B42531BCE100ED53CA /* PostFeedInteractor.swift in Sources */,
 				C95370922531BC7400ED53CA /* FeedProtocol.swift in Sources */,
+				C953712E253439E500ED53CA /* FeedCollectionViewCell.swift in Sources */,
 				C95370FA2531C06400ED53CA /* LoginProtocol.swift in Sources */,
 				C95370C62531BCFE00ED53CA /* NotificationInteractor.swift in Sources */,
 				C9536FE32531873500ED53CA /* SceneDelegate.swift in Sources */,

@@ -49,6 +49,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FeedView.viewDidLoad():FeedView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.collectionView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MainTabPresenter.initMainTabNavControllers():MainTabPresenter.swift">
          <PersistentStrings>
             <PersistentString

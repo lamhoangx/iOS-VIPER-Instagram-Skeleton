@@ -12,7 +12,7 @@ import UIKit
 class UIRefreshableController: UICollectionViewController {
     
     init() {
-        super.init(collectionViewLayout: UICollectionViewLayout())
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     required init?(coder: NSCoder) {
@@ -23,6 +23,7 @@ class UIRefreshableController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView?.backgroundColor = .white
         configureRefreshControl()
     }

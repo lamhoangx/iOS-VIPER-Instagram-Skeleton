@@ -8,12 +8,17 @@
 import Foundation
 import UIKit
 
-class FeedView: UIRefreshableController, FeedViewProtocol {
+private let feedCellIdentifer = "FeelViewCell"
+
+class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, FeedViewProtocol {
 
     var presenter: FeedPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: feedCellIdentifer)
+        
         setupNavigationBar()
         presenter?.viewDidLoad()
         
@@ -22,6 +27,7 @@ class FeedView: UIRefreshableController, FeedViewProtocol {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         dismissUILazyLoading()
     }
     
@@ -46,8 +52,32 @@ class FeedView: UIRefreshableController, FeedViewProtocol {
     
     @objc override func handleActionRefreshControl() {
         endRefreshControl()
+        collectionView?.reloadData()
     }
     
+    // MARK: - UICollectionViewFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = view.frame.width
+        let height = width
+        
+        return CGSize(width: width, height: height)
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: feedCellIdentifer, for: indexPath) as! FeedCollectionViewCell
+        cell.bindFeedViewModel(feedViewModel: FeedViewModel())
+        return cell
+    }
 }
 
 // MARK: Presenter -> View
