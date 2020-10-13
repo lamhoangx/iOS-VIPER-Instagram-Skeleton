@@ -21,7 +21,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     // Image
     let profileImageView: UIImageView = {
         let image = newImageView()
-        image.isUserInteractionEnabled = true
         func testFunc(text: String) {
             
         }
@@ -38,49 +37,78 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return labelButton
     }()
     //
+    // Feed Image content
+    let feedImageContent: UIImageView = {
+        let image = newImageView()
+        return image
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // build UI
-        //Header
-        configurateHeader()
+        
     }
     
     func bindFeedViewModel(feedViewModel: FeedViewModel) {
         self.feedViewModel = feedViewModel
         // binding data
+        
+        configurateUI()
+    }
+    
+    // build UI
+    private func configurateUI() {
+        // Header
+        configurateHeader()
+        // ImageContent
+        configurateFeedImage()
     }
     
     private func configurateHeader() {
         //Image profile
         addSubview(profileImageView)
+        // registry action
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userInfoTapped))
         profileImageView.addGestureRecognizer(tapGestureRecognizer)
+        // layout
         profileImageView.anchor(
-            top: topAnchor,
-            left: leftAnchor,
-            paddingTop: paddingEdge,
-            paddingLeft: paddingEdge,
-            width: profileImageSize,
-            height: profileImageSize
+            left: LayoutAnchor(equalTo: leftAnchor, constant: paddingEdge),
+            top: LayoutAnchor(equalTo: topAnchor, constant: paddingEdge),
+            width: LayoutAnchor(constant: profileImageSize),
+            height: LayoutAnchor(constant: profileImageSize)
         )
         profileImageView.layer.cornerRadius = CGFloat(profileImageSize / 2)
         
         // user name
         addSubview(userName)
+        // registry action
         userName.addTarget(self, action: #selector(userInfoTapped), for: .touchUpInside)
+        // layout
         userName.anchor(
-            left:  profileImageView.rightAnchor,
-            centerY: profileImageView.centerYAnchor,
-            paddingLeft: paddingElement
+            left: LayoutAnchor(equalTo: profileImageView.rightAnchor, constant: paddingElement),
+            centerY: LayoutAnchor(equalTo: profileImageView.centerYAnchor)
         )
         // option button
         addSubview(optionsButton)
+        // registry action
         optionsButton.addTarget(self, action: #selector(optionsTapped), for: .touchUpInside)
+        // layout
         optionsButton.anchor(
-            right: rightAnchor,
-            centerY: profileImageView.centerYAnchor,
-            paddingRight: paddingEdge
+            right: LayoutAnchor(equalTo: rightAnchor, constant: paddingEdge),
+            centerY: LayoutAnchor(equalTo: profileImageView.centerYAnchor)
+        )
+    }
+    private func configurateFeedImage() {
+        addSubview(feedImageContent)
+        // registry action
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(feedImageContentDoubleTapped))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        feedImageContent.addGestureRecognizer(doubleTapGestureRecognizer)
+        // layout
+        feedImageContent.anchor(
+            left: LayoutAnchor(equalTo: leftAnchor),
+            top: LayoutAnchor(equalTo: profileImageView.bottomAnchor, constant: paddingEdge),
+            right: LayoutAnchor(equalTo: rightAnchor),
+            height: LayoutAnchor(equalTo: widthAnchor)
         )
     }
     
@@ -95,6 +123,9 @@ class FeedCollectionViewCell: UICollectionViewCell {
     @objc func optionsTapped() {
         print("optionsTapped")
     }
+    @objc func feedImageContentDoubleTapped() {
+        print("feedImageContentDoubleTapped")
+    }
     
     // Helper
     static func newImageView() -> UIImageView {
@@ -102,6 +133,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.backgroundColor = .lightGray
+        iv.isUserInteractionEnabled = true
         return iv
     }
     

@@ -8,55 +8,65 @@
 import Foundation
 import UIKit
 
-extension UIView {
+
+struct LayoutAnchor<LayoutAnchorType> {
+    var layoutAnchor: LayoutAnchorType?
+    var constant: CGFloat = 0
     
+    init(constant: CGFloat) {
+        // selft.layoutAnchor = self.NSLayoutAnchor
+        self.constant = constant
+    }
+    
+    init(equalTo axisAnchor: LayoutAnchorType?, constant: CGFloat = 0) {
+        self.layoutAnchor = axisAnchor
+        self.constant = constant
+    }
+}
+
+extension UIView {
     func anchor(
-        top: NSLayoutYAxisAnchor? = nil,
-        left: NSLayoutXAxisAnchor? = nil,
-        bottom: NSLayoutYAxisAnchor? = nil,
-        right: NSLayoutXAxisAnchor? = nil,
-        centerX: NSLayoutXAxisAnchor? = nil,
-        centerY: NSLayoutYAxisAnchor? = nil,
-        paddingTop: CGFloat = 0,
-        paddingLeft: CGFloat = 0,
-        paddingBottom: CGFloat = 0,
-        paddingRight: CGFloat = 0,
-        width: CGFloat = 0,
-        height: CGFloat = 0
-    ) {
-        
+        left: LayoutAnchor<NSLayoutXAxisAnchor>? = nil,
+        top: LayoutAnchor<NSLayoutYAxisAnchor>? = nil,
+        right: LayoutAnchor<NSLayoutXAxisAnchor>? = nil,
+        bottom: LayoutAnchor<NSLayoutYAxisAnchor>? = nil,
+        centerX: LayoutAnchor<NSLayoutXAxisAnchor>? = nil,
+        centerY: LayoutAnchor<NSLayoutYAxisAnchor>? = nil,
+        width: LayoutAnchor<NSLayoutDimension>? = nil,
+        height: LayoutAnchor<NSLayoutDimension>? = nil
+    ){
         translatesAutoresizingMaskIntoConstraints = false
-        
-        if let top = top {
-            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
+        if let left = left, let layoutAnchor = left.layoutAnchor {
+            leftAnchor.constraint(equalTo: layoutAnchor, constant: left.constant).isActive = true
         }
-        
-        if let left = left {
-            self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
+        if let top = top, let layoutAnchor = top.layoutAnchor {
+            topAnchor.constraint(equalTo: layoutAnchor, constant: top.constant).isActive = true
         }
-        
-        if let bottom = bottom {
-            self.bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
+        if let right = right, let layoutAnchor = right.layoutAnchor {
+            rightAnchor.constraint(equalTo: layoutAnchor, constant: -right.constant).isActive = true
         }
-        
-        if let right = right {
-            self.rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
+        if let bottom = bottom, let layoutAnchor = bottom.layoutAnchor {
+            bottomAnchor.constraint(equalTo: layoutAnchor, constant: -bottom.constant).isActive = true
         }
-        
-        if let centerX = centerX {
-            self.centerXAnchor.constraint(equalTo: centerX).isActive = true
+        if let centerX = centerX, let layoutAnchor = centerX.layoutAnchor {
+            centerXAnchor.constraint(equalTo: layoutAnchor, constant: centerX.constant).isActive = true
         }
-        
-        if let centerY = centerY {
-            self.centerYAnchor.constraint(equalTo: centerY).isActive = true
+        if let centerY = centerY, let layoutAnchor = centerY.layoutAnchor {
+            centerYAnchor.constraint(equalTo: layoutAnchor, constant: centerY.constant).isActive = true
         }
-        
-        if width != 0 {
-            widthAnchor.constraint(equalToConstant: width).isActive = true
+        if let width = width {
+            if let layoutAnchor = width.layoutAnchor {
+                widthAnchor.constraint(equalTo: layoutAnchor, constant: width.constant).isActive = true
+            } else {
+                widthAnchor.constraint(equalToConstant: width.constant).isActive = true
+            }
         }
-        
-        if height != 0 {
-            heightAnchor.constraint(equalToConstant: height).isActive = true
+        if let height = height {
+            if let layoutAnchor = height.layoutAnchor {
+                heightAnchor.constraint(equalTo: layoutAnchor, constant: height.constant).isActive = true
+            } else {
+                heightAnchor.constraint(equalToConstant: height.constant).isActive = true
+            }
         }
     }
 }
