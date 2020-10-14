@@ -14,6 +14,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "static FeedCollectionViewCell.getImageLabelButton(text:):FeedCollectionViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.imageView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__pthread_kill:(null)">
       </ContextState>
       <ContextState
@@ -52,7 +60,18 @@
          contextName = "FeedView.viewDidLoad():FeedView.swift">
          <PersistentStrings>
             <PersistentString
+               value = "view.bounds.width">
+            </PersistentString>
+            <PersistentString
                value = "self.collectionView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FeedCollectionViewCell.systemLayoutSizeFitting(_:withHorizontalFittingPriority:verticalFittingPriority:):FeedCollectionViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "stackHorizontalView">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

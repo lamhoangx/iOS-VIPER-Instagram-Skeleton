@@ -16,7 +16,6 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: feedCellIdentifer)
         
         setupNavigationBar()
@@ -54,23 +53,14 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
         endRefreshControl()
         collectionView?.reloadData()
     }
-    
-    // MARK: - UICollectionViewFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = view.frame.width
-        let height = width
-        
-        return CGSize(width: width, height: height)
-    }
-    
+
     // MARK: - UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

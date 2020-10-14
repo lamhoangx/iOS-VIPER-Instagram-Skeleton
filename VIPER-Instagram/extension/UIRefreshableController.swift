@@ -10,9 +10,11 @@ import UIKit
 
 // MARK: Support RefreshControl & UI lazy loading
 class UIRefreshableController: UICollectionViewController {
-    
+
     init() {
-        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        super.init(collectionViewLayout: flowLayout)
     }
     
     required init?(coder: NSCoder) {
