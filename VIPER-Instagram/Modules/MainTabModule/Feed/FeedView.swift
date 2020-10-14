@@ -60,12 +60,12 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: feedCellIdentifer, for: indexPath) as! FeedCollectionViewCell
-        cell.bindFeedViewModel(feedViewModel: FeedViewModel())
+        cell.bindFeedViewModel(feedViewModel: FeedViewModel(feedId: CLong(0)))
         return cell
     }
 }

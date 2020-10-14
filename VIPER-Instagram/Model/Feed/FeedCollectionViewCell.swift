@@ -14,6 +14,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     public static let paddingEdge: CGFloat = 12
     public static let paddingElement: CGFloat = 8
     public static let feedImageContentHeight: CGFloat = 300
+    public static let captionTest = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     //
     
     // Constraint size
@@ -56,7 +57,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     //
     // Interact function bar
     // Like
-    // Like
     lazy var likeButton: UIButton = {
         let button = FeedCollectionViewCell.newButton()
         button.setImage(#imageLiteral(resourceName: "like"), for: .normal)
@@ -85,6 +85,36 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    // Interaction info
+    // Like
+    lazy var likesInfo: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.text = "999 likes"
+        let likeTap = UITapGestureRecognizer(target: self, action: #selector(likesInfoTapped))
+        likeTap.numberOfTapsRequired = 1
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(likeTap)
+        
+        return label
+    }()
+    // Caption
+    let caption: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 2
+        label.text = FeedCollectionViewCell.captionTest
+        return label
+    }()
+    // Time
+    let feedTime: UILabel = {
+        let label = UILabel()
+        label.textColor = .lightGray
+        label.font = UIFont.boldSystemFont(ofSize: 10)
+        label.text = "999 years ago"
+        return label
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.anchor(
@@ -111,6 +141,8 @@ class FeedCollectionViewCell: UICollectionViewCell {
         configurateFeedImage()
         // Interact function bar
         configurateInteractFunctionBar()
+        // Interaction info
+        configurateInteractionInfo()
     }
     
     private func configurateHeader() {
@@ -147,11 +179,9 @@ class FeedCollectionViewCell: UICollectionViewCell {
             left: LayoutAnchor(equalTo: leftAnchor),
             top: LayoutAnchor(equalTo: profileImageView.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
             right: LayoutAnchor(equalTo: rightAnchor),
-//            bottom: LayoutAnchor(equalTo: bottomAnchor),
             height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.feedImageContentHeight)
         )
     }
-
     private func configurateInteractFunctionBar() {
         let stackHorizontalView = UIStackView(arrangedSubviews: [likeButton, commentButton, sentButton])
         stackHorizontalView.axis = .horizontal
@@ -166,8 +196,30 @@ class FeedCollectionViewCell: UICollectionViewCell {
         addSubview(bookmarkButton)
         bookmarkButton.anchor(
             top: LayoutAnchor(equalTo: feedImageContent.bottomAnchor),
+            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge)
+        )
+    }
+    private func configurateInteractionInfo() {
+        //Likes info
+        addSubview(likesInfo)
+        likesInfo.anchor(
+            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            top: LayoutAnchor(equalTo: bookmarkButton.bottomAnchor, constant: FeedCollectionViewCell.paddingElement)
+        )
+        // Caption
+        addSubview(caption)
+        caption.anchor(
+            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            top: LayoutAnchor(equalTo: likesInfo.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
+            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge)
+        )
+        // Time
+        addSubview(feedTime)
+        feedTime.anchor(
+            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            top: LayoutAnchor(equalTo: caption.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
             right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            bottom: LayoutAnchor(equalTo: bottomAnchor)
+            bottom: LayoutAnchor(equalTo: bottomAnchor, constant: FeedCollectionViewCell.paddingEdge)
         )
     }
     
@@ -196,6 +248,9 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }
     @objc func bookMarkButtonTapped() {
         print("bookMarkButtonTapped")
+    }
+    @objc func likesInfoTapped() {
+        print("likesInfoTapped")
     }
     
     // Helper
