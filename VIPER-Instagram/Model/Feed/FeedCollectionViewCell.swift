@@ -20,78 +20,76 @@ class FeedCollectionViewCell: UICollectionViewCell {
     // Constraint size
     private var feedViewModel: FeedViewModel?
     
-    // Header
-    // Image
-    lazy var profileImageView: UIImageView = {
+    // Header container
+    // Avatar user
+    lazy var avatarFeedOwner: UIImageView = {
         let image = FeedCollectionViewCell.newImageView()
         // registry action
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userInfoTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userInfoFeedOwnerTapped))
         image.addGestureRecognizer(tapGestureRecognizer)
         return image
     }()
     // Username
-    lazy var userName: UIButton = {
+    lazy var userNameFeedOwner: UIButton = {
         let userName = FeedCollectionViewCell.newLabelButton(text: "UserName")
         // registry action
-        userName.addTarget(self, action: #selector(userInfoTapped), for: .touchUpInside)
+        userName.addTarget(self, action: #selector(userInfoFeedOwnerTapped), for: .touchUpInside)
         return userName
     }()
-    // Option
+    // Option button
     lazy var optionsButton: UIButton = {
         let labelButton = FeedCollectionViewCell.newLabelButton(text: "•••")
         labelButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         // registry action
-        labelButton.addTarget(self, action: #selector(optionsTapped), for: .touchUpInside)
+        labelButton.addTarget(self, action: #selector(optionsButtonTapped), for: .touchUpInside)
         return labelButton
     }()
     //
-    // Feed Image content
-    lazy var feedImageContent: UIImageView = {
+    // Content containter
+    lazy var imagesFeedContent: UIImageView = {
         let image = FeedCollectionViewCell.newImageView()
         // registry action
-        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(feedImageContentDoubleTapped))
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagesFeedContentDoubleTapped))
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         image.addGestureRecognizer(doubleTapGestureRecognizer)
         return image
     }()
-    //
-    // Interact function bar
-    // Like
-    lazy var likeButton: UIButton = {
+    // Like button
+    lazy var likeFeedButton: UIButton = {
         let button = FeedCollectionViewCell.newButton()
         button.setImage(#imageLiteral(resourceName: "like"), for: .normal)
-        button.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(likeFeedButtonTapped), for: .touchUpInside)
         return button
     }()
-    // Comment
-    lazy var commentButton: UIButton = {
+    // Comment button
+    lazy var commentFeedButton: UIButton = {
         let button = FeedCollectionViewCell.newButton()
         button.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
-        button.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(commentFeedButtonTapped), for: .touchUpInside)
         return button
     }()
-    // Sent
-    lazy var sentButton: UIButton = {
+    // Sent button
+    lazy var sentFeedButton: UIButton = {
         let button = FeedCollectionViewCell.newButton()
         button.setImage( #imageLiteral(resourceName: "send"), for: .normal)
-        button.addTarget(self, action: #selector(sentButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sentFeedButtonTapped), for: .touchUpInside)
         return button
     }()
     // Bookmark
-    lazy var bookmarkButton: UIButton = {
+    lazy var bookmarkFeedButton: UIButton = {
         let button = FeedCollectionViewCell.newButton()
         button.setImage( #imageLiteral(resourceName: "collect"), for: .normal)
-        button.addTarget(self, action: #selector(bookMarkButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(bookmarkFeedButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    // Interaction info
-    // Like
-    lazy var likesInfo: UILabel = {
+    // Footer container
+    // Like number
+    lazy var numLikesFeedInfo: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 12)
         label.text = "999 likes"
-        let likeTap = UITapGestureRecognizer(target: self, action: #selector(likesInfoTapped))
+        let likeTap = UITapGestureRecognizer(target: self, action: #selector(numLikesFeedInfoTapped))
         likeTap.numberOfTapsRequired = 1
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(likeTap)
@@ -99,13 +97,13 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return label
     }()
     // Caption
-    let caption: UILabel = {
+    let captionFeed: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
         label.text = FeedCollectionViewCell.captionTest
         return label
     }()
-    // Time
+    // Time post
     let feedTime: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
@@ -114,6 +112,10 @@ class FeedCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // build UI
+    var headerContainer: UIView!
+    var contentContainer: UIView!
+    var footerContainer: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -133,93 +135,119 @@ class FeedCollectionViewCell: UICollectionViewCell {
         
     }
     
-    // build UI
     private func configurateUI() {
         // Header
-        configurateHeader()
-        // ImageContent
-        configurateFeedImage()
-        // Interact function bar
-        configurateInteractFunctionBar()
-        // Interaction info
-        configurateInteractionInfo()
-    }
-    
-    private func configurateHeader() {
-        //Image profile
-        addSubview(profileImageView)
-        // layout
-        profileImageView.anchor(
+        headerContainer = UIView()
+        addSubview(headerContainer)
+        headerContainer.anchor(
             left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
             top: LayoutAnchor(equalTo: topAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+        )
+        configurateHeaderContainer(container: headerContainer)
+        
+        // ImageContent
+        contentContainer = UIView()
+        addSubview(contentContainer)
+        contentContainer.anchor(
+            left: LayoutAnchor(equalTo: leftAnchor),
+            top: LayoutAnchor(equalTo: headerContainer.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
+            right: LayoutAnchor(equalTo: rightAnchor),
+            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+        )
+        configurateContentContainer(container: contentContainer)
+        // Footer
+        footerContainer = UIView()
+        addSubview(footerContainer)
+        footerContainer.anchor(
+            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            top: LayoutAnchor(equalTo: contentContainer.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
+            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            bottom: LayoutAnchor(equalTo: bottomAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+        )
+        configurateFooterContainer(container: footerContainer)
+    }
+    
+    private func configurateHeaderContainer(container: UIView) {
+
+        //Image profile
+        container.addSubview(avatarFeedOwner)
+        // layout
+        avatarFeedOwner.anchor(
+            left: LayoutAnchor(equalTo: container.leftAnchor),
+            top: LayoutAnchor(equalTo: container.topAnchor),
             width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
             height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
         )
-        profileImageView.layer.cornerRadius = CGFloat(FeedCollectionViewCell.interfaceButtonSize / 2)
+        avatarFeedOwner.layer.cornerRadius = CGFloat(FeedCollectionViewCell.interfaceButtonSize / 2)
         
         // user name
-        addSubview(userName)
+        container.addSubview(userNameFeedOwner)
         // layout
-        userName.anchor(
-            left: LayoutAnchor(equalTo: profileImageView.rightAnchor, constant: FeedCollectionViewCell.paddingElement),
-            centerY: LayoutAnchor(equalTo: profileImageView.centerYAnchor)
+        userNameFeedOwner.anchor(
+            left: LayoutAnchor(equalTo: avatarFeedOwner.rightAnchor, constant: FeedCollectionViewCell.paddingElement),
+            centerY: LayoutAnchor(equalTo: avatarFeedOwner.centerYAnchor)
         )
         // option button
-        addSubview(optionsButton)
+        container.addSubview(optionsButton)
         // layout
         optionsButton.anchor(
-            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            centerY: LayoutAnchor(equalTo: profileImageView.centerYAnchor)
+            right: LayoutAnchor(equalTo: container.rightAnchor),
+            bottom: LayoutAnchor(equalTo: container.bottomAnchor),
+            centerY: LayoutAnchor(equalTo: avatarFeedOwner.centerYAnchor)
         )
     }
-    private func configurateFeedImage() {
-        addSubview(feedImageContent)
-        // layout
-        feedImageContent.anchor(
-            left: LayoutAnchor(equalTo: leftAnchor),
-            top: LayoutAnchor(equalTo: profileImageView.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
-            right: LayoutAnchor(equalTo: rightAnchor),
+    private func configurateContentContainer(container: UIView) {
+        // Image content
+        container.addSubview(imagesFeedContent)
+        imagesFeedContent.anchor(
+            left: LayoutAnchor(equalTo: container.leftAnchor),
+            top: LayoutAnchor(equalTo: container.topAnchor),
+            right: LayoutAnchor(equalTo: container.rightAnchor),
             height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.feedImageContentHeight)
         )
-    }
-    private func configurateInteractFunctionBar() {
-        let stackHorizontalView = UIStackView(arrangedSubviews: [likeButton, commentButton, sentButton])
+        // Interact button
+        let stackHorizontalView = UIStackView(arrangedSubviews: [likeFeedButton, commentFeedButton, sentFeedButton])
         stackHorizontalView.axis = .horizontal
         stackHorizontalView.distribution = .equalCentering
         
-        addSubview(stackHorizontalView)
+        container.addSubview(stackHorizontalView)
         stackHorizontalView.anchor(
-            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            top: LayoutAnchor(equalTo: feedImageContent.bottomAnchor)
+            left: LayoutAnchor(equalTo: container.leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            top: LayoutAnchor(equalTo: imagesFeedContent.bottomAnchor)
         )
         
-        addSubview(bookmarkButton)
-        bookmarkButton.anchor(
-            top: LayoutAnchor(equalTo: feedImageContent.bottomAnchor),
-            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge)
+        container.addSubview(bookmarkFeedButton)
+        bookmarkFeedButton.anchor(
+            top: LayoutAnchor(equalTo: imagesFeedContent.bottomAnchor),
+            right: LayoutAnchor(equalTo: container.rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
+            bottom: LayoutAnchor(equalTo: container.bottomAnchor)
         )
     }
-    private func configurateInteractionInfo() {
+
+    private func configurateFooterContainer(container: UIView) {
         //Likes info
-        addSubview(likesInfo)
-        likesInfo.anchor(
-            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            top: LayoutAnchor(equalTo: bookmarkButton.bottomAnchor, constant: FeedCollectionViewCell.paddingElement)
+        container.addSubview(numLikesFeedInfo)
+        numLikesFeedInfo.anchor(
+            left: LayoutAnchor(equalTo: container.leftAnchor),
+            top: LayoutAnchor(equalTo: container.topAnchor)
         )
         // Caption
-        addSubview(caption)
-        caption.anchor(
-            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            top: LayoutAnchor(equalTo: likesInfo.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
-            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge)
+        container.addSubview(captionFeed)
+        captionFeed.anchor(
+            left: LayoutAnchor(equalTo: container.leftAnchor),
+            top: LayoutAnchor(equalTo: numLikesFeedInfo.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
+            right: LayoutAnchor(equalTo: container.rightAnchor)
         )
         // Time
-        addSubview(feedTime)
+        container.addSubview(feedTime)
         feedTime.anchor(
-            left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            top: LayoutAnchor(equalTo: caption.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
-            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            bottom: LayoutAnchor(equalTo: bottomAnchor, constant: FeedCollectionViewCell.paddingEdge)
+            left: LayoutAnchor(equalTo: container.leftAnchor),
+            top: LayoutAnchor(equalTo: captionFeed.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
+            right: LayoutAnchor(equalTo: container.rightAnchor),
+            bottom: LayoutAnchor(equalTo: container.bottomAnchor)
         )
     }
     
@@ -228,28 +256,28 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }
     
     // Func to handle click
-    @objc func userInfoTapped() {
+    @objc func userInfoFeedOwnerTapped() {
         print("userInfoTapped")
     }
-    @objc func optionsTapped() {
+    @objc func optionsButtonTapped() {
         print("optionsTapped")
     }
-    @objc func feedImageContentDoubleTapped() {
+    @objc func imagesFeedContentDoubleTapped() {
         print("feedImageContentDoubleTapped")
     }
-    @objc func likeButtonTapped() {
+    @objc func likeFeedButtonTapped() {
         print("likeButtonTapped")
     }
-    @objc func commentButtonTapped() {
+    @objc func commentFeedButtonTapped() {
         print("commentButtonTapped")
     }
-    @objc func sentButtonTapped() {
+    @objc func sentFeedButtonTapped() {
         print("sentButtonTapped")
     }
-    @objc func bookMarkButtonTapped() {
+    @objc func bookmarkFeedButtonTapped() {
         print("bookMarkButtonTapped")
     }
-    @objc func likesInfoTapped() {
+    @objc func numLikesFeedInfoTapped() {
         print("likesInfoTapped")
     }
     
