@@ -275,7 +275,6 @@
 		C953701925318C2000ED53CA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C95370782531AFEE00ED53CA /* Extensions.swift */,
 				C953707D2531B27E00ED53CA /* ViewUtils.swift */,
 			);
 			path = Utils;
@@ -433,6 +432,7 @@
 		C9537116253372C000ED53CA /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				C95370782531AFEE00ED53CA /* Extensions.swift */,
 				C95371172533730700ED53CA /* UIRefreshableController.swift */,
 			);
 			path = extension;
