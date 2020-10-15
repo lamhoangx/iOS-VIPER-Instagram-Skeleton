@@ -45,7 +45,7 @@ protocol PostFeedPresenterProtocol: class {
 // Extends by presenter to receive notifies from interactor
 protocol PostFeedInteractorDelegate: class {
     //func for interactor -> presenter
-
+    
 }
 
 // MARK: Interactor

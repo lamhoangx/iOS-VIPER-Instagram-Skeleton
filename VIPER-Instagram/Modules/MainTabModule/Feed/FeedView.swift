@@ -16,18 +16,17 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: feedCellIdentifer)
-        
         setupNavigationBar()
-        presenter?.viewDidLoad()
-        
+            
+        self.collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: feedCellIdentifer)
         showUILazyLoading()
+        
+        presenter?.viewDidLoad()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dismissUILazyLoading()
     }
     
     private func setupNavigationBar() {
@@ -60,20 +59,26 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return presenter?.getFeedCount() ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: feedCellIdentifer, for: indexPath) as! FeedCollectionViewCell
-        cell.bindFeedViewModel(feedViewModel: FeedViewModel(feedId: CLong(0)))
+        if let presenter = presenter {
+            cell.bindFeedViewModel(feedViewModel: presenter.getFeed(at: indexPath))
+        }
         return cell
     }
 }
 
 // MARK: Presenter -> View
 extension FeedView: FeedPresenterDelegate {
+    func feedDidPost(_ feedViewModel: FeedViewModel) {
+        collectionView?.reloadData()
+    }
+    
     func presenterDidLoad() {
-
+        dismissUILazyLoading()
     }
     
 }

@@ -14,7 +14,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     public static let paddingEdge: CGFloat = 12
     public static let paddingElement: CGFloat = 8
     public static let feedImageContentHeight: CGFloat = 300
-    public static let captionTest = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    public static let captionTest = ""
     //
     
     // Constraint size
@@ -132,7 +132,10 @@ class FeedCollectionViewCell: UICollectionViewCell {
     func bindFeedViewModel(feedViewModel: FeedViewModel) {
         self.feedViewModel = feedViewModel
         // binding data
-        
+        userNameFeedOwner.setTitle(feedViewModel.userName, for: .normal)
+        numLikesFeedInfo.text = "\(feedViewModel.likesNumber! as UInt64) likes"
+        captionFeed.text = feedViewModel.caption
+        feedTime.text = "\(feedViewModel.timePost! as UInt64) years ago"
     }
     
     private func configurateUI() {
