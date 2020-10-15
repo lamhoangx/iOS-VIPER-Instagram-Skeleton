@@ -38,7 +38,8 @@ class MainTabPresenter: MainTabPresenterProtocol {
     }
     
     private func initMainTabNavControllers() {
-        view?.tabsControllerDidLoad(viewNavControllers)
+//        view?.tabsControllerDidLoad([viewNavControllers])
+        view?.tabsControllerDidLoad([ViewUtils.createNavController(unselectedImage: #imageLiteral(resourceName: "Home"), selectedImage: #imageLiteral(resourceName: "HomeSelected"), rootViewController: FeedRouter.buildFeedView()!)])
     }
     
     private func getNavPostFeedController() -> UINavigationController {

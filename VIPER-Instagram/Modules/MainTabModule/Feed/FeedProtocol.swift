@@ -25,6 +25,7 @@ protocol FeedViewProtocol: class {
 protocol FeedPresenterDelegate: class {
     //func for presenter -> view
     func presenterDidLoad()
+    func feedDidPost(_ feedViewModel: FeedViewModel)
 }
 
 // MARK: Presenter
@@ -33,13 +34,17 @@ protocol FeedPresenterProtocol: class {
     var view: (FeedViewProtocol & FeedPresenterDelegate)? { get set }
     var interactor: FeedInteractorProtocol? { get set }
 
-    // func for presenter -> interactor
+    // func for view -> presenter
     func viewDidLoad()
+    func getFeed(at index: IndexPath) -> FeedViewModel
+    func getFeedCount() -> Int
 
 }
 // Extends by presenter to receive notifies from interactor
 protocol FeedInteractorDelegate: class {
     //func for interactor -> presenter
+    func receiveFeeds(feeds: [FeedModel])
+    func feedDidPost(_ feed: FeedModel)
 
 }
 
@@ -49,11 +54,18 @@ protocol FeedInteractorProtocol: class {
     var dataManager: FeedDataManagerProtocol? { get set }
 
     // func for presenter -> interactor
-
+    func loadMoreFeeds()
+    func reloadTimelines()
+    
 }
 
 // MARK: DataManager
 // Manage services to knows about entity
 protocol FeedDataManagerProtocol: class {
-
+    // Get list feed start
+    func reloadFeeds() -> [FeedModel]
+    // Get list feed from $index with $limit
+    func fetchFeeds(from index: CLong, limit: Int) -> [FeedModel]
+    // Post Feed
+    func postFeed(feed: FeedModel, success: (() -> Void?), failure: ((_ error: Int) -> Void?))
 }

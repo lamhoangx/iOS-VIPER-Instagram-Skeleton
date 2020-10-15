@@ -67,6 +67,13 @@
 		C95371072532E32800ED53CA /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371062532E32800ED53CA /* FeedModel.swift */; };
 		C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953710E2532E35700ED53CA /* FeedViewModel.swift */; };
 		C95371182533730700ED53CA /* UIRefreshableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371172533730700ED53CA /* UIRefreshableController.swift */; };
+		C953712E253439E500ED53CA /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */; };
+		C99F48902538032D007B1A77 /* InstagramDatabasesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F488F2538032D007B1A77 /* InstagramDatabasesManager.swift */; };
+		C99F489525380397007B1A77 /* InstagramAPIsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F489425380397007B1A77 /* InstagramAPIsManager.swift */; };
+		C99F489F2538248C007B1A77 /* CommentFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F489E2538248C007B1A77 /* CommentFeedModel.swift */; };
+		C99F48A4253824F8007B1A77 /* LikeFeedInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F48A3253824F8007B1A77 /* LikeFeedInfo.swift */; };
+		C99F48AA2538259E007B1A77 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F48A92538259E007B1A77 /* UserModel.swift */; };
+		C9A06CC12538405C00B0AE73 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A06CC02538405C00B0AE73 /* DummyData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +160,13 @@
 		C95371062532E32800ED53CA /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		C953710E2532E35700ED53CA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		C95371172533730700ED53CA /* UIRefreshableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshableController.swift; sourceTree = "<group>"; };
+		C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		C99F488F2538032D007B1A77 /* InstagramDatabasesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramDatabasesManager.swift; sourceTree = "<group>"; };
+		C99F489425380397007B1A77 /* InstagramAPIsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramAPIsManager.swift; sourceTree = "<group>"; };
+		C99F489E2538248C007B1A77 /* CommentFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentFeedModel.swift; sourceTree = "<group>"; };
+		C99F48A3253824F8007B1A77 /* LikeFeedInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeFeedInfo.swift; sourceTree = "<group>"; };
+		C99F48A92538259E007B1A77 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		C9A06CC02538405C00B0AE73 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,8 +220,7 @@
 				C9537116253372C000ED53CA /* extension */,
 				C953702B253195CD00ED53CA /* DataManager */,
 				C953701925318C2000ED53CA /* Utils */,
-				C953701825318C0500ED53CA /* ViewModel */,
-				C953701725318BF900ED53CA /* Model */,
+				C953701725318BF900ED53CA /* Entity */,
 				C953701625318BF200ED53CA /* Modules */,
 				C9536FE02531873500ED53CA /* AppDelegate.swift */,
 				C9536FE22531873500ED53CA /* SceneDelegate.swift */,
@@ -215,6 +228,7 @@
 				C9536FEE2531873800ED53CA /* LaunchScreen.storyboard */,
 				C9536FF12531873800ED53CA /* Info.plist */,
 				C9536FE92531873500ED53CA /* VIPER_Instagram.xcdatamodeld */,
+				C99F489425380397007B1A77 /* InstagramAPIsManager.swift */,
 			);
 			path = "VIPER-Instagram";
 			sourceTree = "<group>";
@@ -249,19 +263,13 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		C953701725318BF900ED53CA /* Model */ = {
+		C953701725318BF900ED53CA /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				C99F48A825382585007B1A77 /* User */,
 				C95371052532E30500ED53CA /* Feed */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C953701825318C0500ED53CA /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		C953701925318C2000ED53CA /* Utils */ = {
@@ -302,6 +310,8 @@
 		C953702B253195CD00ED53CA /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				C99F488F2538032D007B1A77 /* InstagramDatabasesManager.swift */,
+				C9A06CC02538405C00B0AE73 /* DummyData.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -414,8 +424,8 @@
 		C95371052532E30500ED53CA /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				C95371062532E32800ED53CA /* FeedModel.swift */,
-				C953710E2532E35700ED53CA /* FeedViewModel.swift */,
+				C99F489A253808DE007B1A77 /* View */,
+				C99F4899253808D8007B1A77 /* Model */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -426,6 +436,33 @@
 				C95371172533730700ED53CA /* UIRefreshableController.swift */,
 			);
 			path = extension;
+			sourceTree = "<group>";
+		};
+		C99F4899253808D8007B1A77 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C95371062532E32800ED53CA /* FeedModel.swift */,
+				C953710E2532E35700ED53CA /* FeedViewModel.swift */,
+				C99F489E2538248C007B1A77 /* CommentFeedModel.swift */,
+				C99F48A3253824F8007B1A77 /* LikeFeedInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C99F489A253808DE007B1A77 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C99F48A825382585007B1A77 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C99F48A92538259E007B1A77 /* UserModel.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,7 +595,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95370EC2531C04C00ED53CA /* TimelineDataManager.swift in Sources */,
+				C99F489F2538248C007B1A77 /* CommentFeedModel.swift in Sources */,
 				C95371072532E32800ED53CA /* FeedModel.swift in Sources */,
+				C9A06CC12538405C00B0AE73 /* DummyData.swift in Sources */,
 				C95370FB2531C06400ED53CA /* LoginDataManager.swift in Sources */,
 				C953708F2531BC7400ED53CA /* FeedRouter.swift in Sources */,
 				C95370EB2531C04C00ED53CA /* TimelineProtocol.swift in Sources */,
@@ -576,6 +615,7 @@
 				C9537027253195BE00ED53CA /* MainTabDataManager.swift in Sources */,
 				C95370B32531BCE100ED53CA /* PostFeedRouter.swift in Sources */,
 				C95371182533730700ED53CA /* UIRefreshableController.swift in Sources */,
+				C99F48AA2538259E007B1A77 /* UserModel.swift in Sources */,
 				C9536FE12531873500ED53CA /* AppDelegate.swift in Sources */,
 				C9537025253195BE00ED53CA /* MainTabView.swift in Sources */,
 				C95370F82531C06400ED53CA /* LoginInteractor.swift in Sources */,
@@ -584,9 +624,11 @@
 				C95370EA2531C04C00ED53CA /* TimelineView.swift in Sources */,
 				C953708E2531BC7400ED53CA /* FeedPresenter.swift in Sources */,
 				C95370A42531BCC800ED53CA /* SearchProtocol.swift in Sources */,
+				C99F48A4253824F8007B1A77 /* LikeFeedInfo.swift in Sources */,
 				C9537026253195BE00ED53CA /* MainTabProtocol.swift in Sources */,
 				C95370F62531C06400ED53CA /* LoginPresenter.swift in Sources */,
 				C95370C42531BCFE00ED53CA /* NotificationPresenter.swift in Sources */,
+				C99F489525380397007B1A77 /* InstagramAPIsManager.swift in Sources */,
 				C95370792531AFEE00ED53CA /* Extensions.swift in Sources */,
 				C95370A22531BCC800ED53CA /* SearchInteractor.swift in Sources */,
 				C95370E82531C04C00ED53CA /* TimelineRouter.swift in Sources */,
@@ -596,11 +638,13 @@
 				C95370DA2531C03D00ED53CA /* UserProfileInteractor.swift in Sources */,
 				C95370E72531C04C00ED53CA /* TimelinePresenter.swift in Sources */,
 				C953707E2531B27E00ED53CA /* ViewUtils.swift in Sources */,
+				C99F48902538032D007B1A77 /* InstagramDatabasesManager.swift in Sources */,
 				C9537024253195BE00ED53CA /* MainTabInteractor.swift in Sources */,
 				C95370C72531BCFE00ED53CA /* NotificationView.swift in Sources */,
 				C95370D82531C03D00ED53CA /* UserProfilePresenter.swift in Sources */,
 				C95370B42531BCE100ED53CA /* PostFeedInteractor.swift in Sources */,
 				C95370922531BC7400ED53CA /* FeedProtocol.swift in Sources */,
+				C953712E253439E500ED53CA /* FeedCollectionViewCell.swift in Sources */,
 				C95370FA2531C06400ED53CA /* LoginProtocol.swift in Sources */,
 				C95370C62531BCFE00ED53CA /* NotificationInteractor.swift in Sources */,
 				C9536FE32531873500ED53CA /* SceneDelegate.swift in Sources */,
@@ -782,6 +826,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "VIPER-Instagram/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -800,6 +845,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "VIPER-Instagram/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

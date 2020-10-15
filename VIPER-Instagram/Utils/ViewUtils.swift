@@ -18,8 +18,14 @@ class ViewUtils {
         activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 80.0, height: 80.0);
         activityIndicator.center = target.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.style =
-            UIActivityIndicatorView.Style.large
+        if #available(iOS 13.0, *) {
+            activityIndicator.style =
+                UIActivityIndicatorView.Style.large
+        } else {
+            // Fallback on earlier versions
+            activityIndicator.style =
+                UIActivityIndicatorView.Style.whiteLarge
+        }
         activityIndicator.color = .gray
         target.addSubview(activityIndicator)
         activityIndicator.startAnimating()

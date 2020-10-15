@@ -8,10 +8,44 @@
 import Foundation
 
 class FeedInteractor: FeedInteractorProtocol {
-
-    weak var presenter: FeedInteractorDelegate?
-    var dataManager: FeedDataManagerProtocol?
-
+    
+    internal weak var presenter: FeedInteractorDelegate?
+    internal var dataManager: FeedDataManagerProtocol?
+    
+    // Get newest feeds to show onto timelines
+    func reloadTimelines() {
+        let feeds = (dataManager?.reloadFeeds())!
+        handleFeedIndex(feeds: feeds)
+    }
+    
+    // impl business to decide feed index show onto timelines ( fist to last)
+    private func handleFeedIndex(feeds: [FeedModel]) {
+        // do something
+        //
+        presenter?.receiveFeeds(feeds: feeds)
+    }
+    
+    func loadMoreFeeds() {
+        // get more
+        guard let feedsMore = dataManager?.fetchFeeds(from: 0, limit: 10) else {
+            // failure
+            return
+        }
+        //
+        handleFeedIndex(feeds: feedsMore)
+    }
+    
+    func postFeed(feed: FeedModel) {
+        dataManager?.postFeed(
+            feed: feed,
+            success: ({
+                presenter?.feedDidPost(feed)
+            }),
+            failure: ({ (errorCode: Int) in
+                
+            })
+        )
+    }
 
 }
 

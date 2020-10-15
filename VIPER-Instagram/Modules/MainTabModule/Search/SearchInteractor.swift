@@ -11,7 +11,7 @@ class SearchInteractor: SearchInteractorProtocol {
 
     weak var presenter: SearchInteractorDelegate?
     var dataManager: SearchDataManagerProtocol?
-
-
+    
+    
 }
 

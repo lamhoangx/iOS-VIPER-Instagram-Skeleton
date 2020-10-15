@@ -20,6 +20,7 @@ class MainTabView: UITabBarController, UITabBarControllerDelegate, MainTabViewPr
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         presenter?.prepare()
     }
     

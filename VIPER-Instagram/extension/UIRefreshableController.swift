@@ -10,9 +10,11 @@ import UIKit
 
 // MARK: Support RefreshControl & UI lazy loading
 class UIRefreshableController: UICollectionViewController {
-    
+
     init() {
-        super.init(collectionViewLayout: UICollectionViewLayout())
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        super.init(collectionViewLayout: flowLayout)
     }
     
     required init?(coder: NSCoder) {
@@ -23,6 +25,7 @@ class UIRefreshableController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView?.backgroundColor = .white
         configureRefreshControl()
     }

@@ -8,21 +8,25 @@
 import Foundation
 import UIKit
 
-class FeedView: UIRefreshableController, FeedViewProtocol {
+private let feedCellIdentifer = "FeelViewCell"
+
+class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, FeedViewProtocol {
 
     var presenter: FeedPresenterProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        presenter?.viewDidLoad()
-        
+            
+        self.collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: feedCellIdentifer)
         showUILazyLoading()
+        
+        presenter?.viewDidLoad()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        dismissUILazyLoading()
+        super.viewDidAppear(animated)
     }
     
     private func setupNavigationBar() {
@@ -46,14 +50,35 @@ class FeedView: UIRefreshableController, FeedViewProtocol {
     
     @objc override func handleActionRefreshControl() {
         endRefreshControl()
+        collectionView?.reloadData()
+    }
+
+    // MARK: - UICollectionViewDataSource
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter?.getFeedCount() ?? 0
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: feedCellIdentifer, for: indexPath) as! FeedCollectionViewCell
+        if let presenter = presenter {
+            cell.bindFeedViewModel(feedViewModel: presenter.getFeed(at: indexPath))
+        }
+        return cell
+    }
 }
 
 // MARK: Presenter -> View
 extension FeedView: FeedPresenterDelegate {
+    func feedDidPost(_ feedViewModel: FeedViewModel) {
+        collectionView?.reloadData()
+    }
+    
     func presenterDidLoad() {
-
+        dismissUILazyLoading()
     }
     
 }
