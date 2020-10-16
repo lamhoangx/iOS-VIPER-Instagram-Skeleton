@@ -74,6 +74,8 @@
 		C99F48A4253824F8007B1A77 /* LikeFeedInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F48A3253824F8007B1A77 /* LikeFeedInfo.swift */; };
 		C99F48AA2538259E007B1A77 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F48A92538259E007B1A77 /* UserModel.swift */; };
 		C9A06CC12538405C00B0AE73 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A06CC02538405C00B0AE73 /* DummyData.swift */; };
+		C9D694AD2539FFAC006E2A2C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D694AC2539FFAC006E2A2C /* ImageLoader.swift */; };
+		C9D694B8253A0548006E2A2C /* FeedCollectionViewCell+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D694B7253A0548006E2A2C /* FeedCollectionViewCell+UI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +169,8 @@
 		C99F48A3253824F8007B1A77 /* LikeFeedInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeFeedInfo.swift; sourceTree = "<group>"; };
 		C99F48A92538259E007B1A77 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C9A06CC02538405C00B0AE73 /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		C9D694AC2539FFAC006E2A2C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		C9D694B7253A0548006E2A2C /* FeedCollectionViewCell+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedCollectionViewCell+UI.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +279,7 @@
 		C953701925318C2000ED53CA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C9D694B12539FFB8006E2A2C /* ImageLoader */,
 				C953707D2531B27E00ED53CA /* ViewUtils.swift */,
 			);
 			path = Utils;
@@ -453,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */,
+				C9D694B7253A0548006E2A2C /* FeedCollectionViewCell+UI.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -463,6 +469,14 @@
 				C99F48A92538259E007B1A77 /* UserModel.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		C9D694B12539FFB8006E2A2C /* ImageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				C9D694AC2539FFAC006E2A2C /* ImageLoader.swift */,
+			);
+			path = ImageLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -632,7 +646,9 @@
 				C95370792531AFEE00ED53CA /* Extensions.swift in Sources */,
 				C95370A22531BCC800ED53CA /* SearchInteractor.swift in Sources */,
 				C95370E82531C04C00ED53CA /* TimelineRouter.swift in Sources */,
+				C9D694AD2539FFAC006E2A2C /* ImageLoader.swift in Sources */,
 				C95370F72531C06400ED53CA /* LoginRouter.swift in Sources */,
+				C9D694B8253A0548006E2A2C /* FeedCollectionViewCell+UI.swift in Sources */,
 				C95370A02531BCC800ED53CA /* SearchPresenter.swift in Sources */,
 				C95370E92531C04C00ED53CA /* TimelineInteractor.swift in Sources */,
 				C95370DA2531C03D00ED53CA /* UserProfileInteractor.swift in Sources */,
@@ -824,7 +840,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KZCMAC9SVY;
 				INFOPLIST_FILE = "VIPER-Instagram/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -833,6 +851,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "lamhx.VIPER-Instagram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -843,7 +862,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KZCMAC9SVY;
 				INFOPLIST_FILE = "VIPER-Instagram/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -852,6 +873,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "lamhx.VIPER-Instagram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

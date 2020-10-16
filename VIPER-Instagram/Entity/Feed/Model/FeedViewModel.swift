@@ -13,7 +13,7 @@ class FeedViewModel {
     let feedId: UInt64
     var userName: String?
     var avatarUrl: String?
-    var imagesUrlFeed: [String]?
+    var imagesUrlFeed: String? // support 1 pic
     var isBookmark: Bool?
     var isLike: Bool?
     var likesNumber: UInt64?
@@ -29,7 +29,7 @@ class FeedViewModel {
         let feedViewModel = FeedViewModel(feedId: feedModel.feedId)
         feedViewModel.userName = feedModel.usernameOwner
         feedViewModel.avatarUrl = feedModel.avatarUrlOwner
-        feedViewModel.imagesUrlFeed = feedModel.imagesUrlFeed
+        feedViewModel.imagesUrlFeed = feedModel.imagesUrlFeed![0] // support first pic
         feedViewModel.isBookmark = feedModel.isBookmark
         feedViewModel.isLike = feedModel.isLike
         feedViewModel.likesNumber = feedModel.likeInfo?.likeNumber
