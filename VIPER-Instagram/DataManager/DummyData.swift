@@ -16,7 +16,7 @@ extension InstagramDatabasesManager {
         feed0.usernameOwner = "Feed0"
         feed0.avatarUrlOwner = ""
         feed0.imagesUrlFeed = [""]
-        feed0.isBookmark = false
+        feed0.isBookmark = true
         feed0.isLike =  false
         feed0.likeInfo = LikeFeedInfo(likeNum: 999)
         feed0.caption = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -29,7 +29,7 @@ extension InstagramDatabasesManager {
         feed1.avatarUrlOwner = ""
         feed1.imagesUrlFeed = [""]
         feed1.isBookmark = false
-        feed1.isLike =  false
+        feed1.isLike =  true
         feed1.likeInfo = LikeFeedInfo(likeNum: 999)
         feed1.caption = ""
         feed1.timePost = 999
@@ -41,7 +41,7 @@ extension InstagramDatabasesManager {
         feed2.avatarUrlOwner = ""
         feed2.imagesUrlFeed = [""]
         feed2.isBookmark = false
-        feed2.isLike =  false
+        feed2.isLike =  true
         feed2.likeInfo = LikeFeedInfo(likeNum: 999)
         feed2.caption = ""
         feed2.timePost = 999

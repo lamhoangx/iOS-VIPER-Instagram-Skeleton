@@ -30,7 +30,7 @@ class MainTabPresenter: MainTabPresenterProtocol {
             ViewUtils.createNavController(unselectedImage: #imageLiteral(resourceName: "Search"), selectedImage: #imageLiteral(resourceName: "SearchSelected"), rootViewController: searchView!),
             // 3: PostFeed
             ViewUtils.createNavController(unselectedImage: #imageLiteral(resourceName: "Post"), selectedImage: #imageLiteral(resourceName: "Post"), rootViewController: nil),
-            // 4: Notification
+            // 4: Notification #imageLiteral(resourceName: "Activity")
             ViewUtils.createNavController(unselectedImage: #imageLiteral(resourceName: "Activity"), selectedImage: #imageLiteral(resourceName: "ActivitySelected"), rootViewController: notificationView!),
             // 5: Profile - todo//
             ViewUtils.createNavController(unselectedImage: #imageLiteral(resourceName: "Profile"), selectedImage: #imageLiteral(resourceName: "ProfileSelected"), rootViewController: userProfile)

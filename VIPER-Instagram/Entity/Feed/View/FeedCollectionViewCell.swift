@@ -57,7 +57,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     // Like button
     lazy var likeFeedButton: UIButton = {
         let button = FeedCollectionViewCell.newButton()
-        button.setImage(#imageLiteral(resourceName: "like"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "Activity"), for: .normal)
         button.addTarget(self, action: #selector(likeFeedButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -78,7 +78,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     // Bookmark
     lazy var bookmarkFeedButton: UIButton = {
         let button = FeedCollectionViewCell.newButton()
-        button.setImage( #imageLiteral(resourceName: "collect"), for: .normal)
+        button.setImage( #imageLiteral(resourceName: "bookmark"), for: .normal)
         button.addTarget(self, action: #selector(bookmarkFeedButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -136,6 +136,16 @@ class FeedCollectionViewCell: UICollectionViewCell {
         numLikesFeedInfo.text = "\(feedViewModel.likesNumber! as UInt64) likes"
         captionFeed.text = feedViewModel.caption
         feedTime.text = "\(feedViewModel.timePost! as UInt64) years ago"
+        if feedViewModel.isLike! {
+            likeFeedButton.setImage(#imageLiteral(resourceName: "ActivitySelected"), for: .normal)
+        } else {
+            likeFeedButton.setImage(#imageLiteral(resourceName: "Activity"), for: .normal)
+        }
+        if feedViewModel.isBookmark! {
+            bookmarkFeedButton.setImage(#imageLiteral(resourceName: "bookmark_selected"), for: .normal)
+        } else {
+            bookmarkFeedButton.setImage(#imageLiteral(resourceName: "bookmark"), for: .normal)
+        }
     }
     
     private func configurateUI() {
@@ -312,7 +322,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         button.tintColor = .black
         button.contentMode = .center
         button.imageView?.contentMode = .scaleAspectFit
-        button.imageEdgeInsets = UIEdgeInsets(top: 8,left: 8,bottom: 8,right: 8)
+        button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         button.anchor(
             width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
             height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
