@@ -53,6 +53,11 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
         collectionView?.reloadData()
     }
 
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let width = UIScreen.main.bounds.width
+//        return CGSize(width: width, height: width + 300)
+//    }
+    
     // MARK: - UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
