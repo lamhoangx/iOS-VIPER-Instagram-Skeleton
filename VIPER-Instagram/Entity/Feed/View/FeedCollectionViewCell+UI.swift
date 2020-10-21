@@ -63,7 +63,9 @@ extension FeedCollectionViewCell {
         // layout
         userNameFeedOwner.anchor(
             left: LayoutAnchor(equalTo: avatarFeedOwner.rightAnchor, constant: FeedCollectionViewCell.paddingElement),
-            centerY: LayoutAnchor(equalTo: avatarFeedOwner.centerYAnchor)
+            centerY: LayoutAnchor(equalTo: avatarFeedOwner.centerYAnchor),
+            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
+            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
         )
         // option button
         container.addSubview(optionsButton)
@@ -106,7 +108,8 @@ extension FeedCollectionViewCell {
         container.addSubview(numLikesFeedInfo)
         numLikesFeedInfo.anchor(
             left: LayoutAnchor(equalTo: container.leftAnchor),
-            top: LayoutAnchor(equalTo: container.topAnchor)
+            top: LayoutAnchor(equalTo: container.topAnchor),
+            right: LayoutAnchor(equalTo: container.rightAnchor)
         )
         // Caption
         container.addSubview(captionFeed)
@@ -142,6 +145,7 @@ extension FeedCollectionViewCell {
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.anchor(
+            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
             height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
         )
         return button
