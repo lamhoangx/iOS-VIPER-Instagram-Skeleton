@@ -12,6 +12,7 @@ import UIKit
 struct LayoutAnchor<LayoutAnchorType> {
     var layoutAnchor: LayoutAnchorType?
     var constant: CGFloat = 0
+    var priority: Float = 1000
     
     // Comparibility
     // -1: lessThanOrEqualTo
@@ -19,87 +20,106 @@ struct LayoutAnchor<LayoutAnchorType> {
     //  1: greaterThanOrEqualTo
     private(set) var comparibility: Int = 0
     
-    init(equalToConstant constant: CGFloat) {
+    init(equalToConstant constant: CGFloat, priority: Float = 1000) {
         self.constant = constant
         self.comparibility = 0
+        self.priority = priority
     }
-    init(greaterThanOrEqualToConstant constant: CGFloat) {
+    init(greaterThanOrEqualToConstant constant: CGFloat, priority: Float = 1000) {
         self.constant = constant
         self.comparibility = 1
+        self.priority = priority
     }
-    init(lessThanOrEqualToConstant constant: CGFloat) {
+    init(lessThanOrEqualToConstant constant: CGFloat, priority: Float = 1000) {
         self.constant = constant
         self.comparibility = -1
+        self.priority = priority
     }
-    init(equalTo axisAnchor: LayoutAnchorType, constant: CGFloat = 0) {
+    init(equalTo axisAnchor: LayoutAnchorType, constant: CGFloat = 0, priority: Float = 1000) {
         self.layoutAnchor = axisAnchor
         self.constant = constant
         self.comparibility = 0
+        self.priority = priority
     }
-    init(greaterThanOrEqualTo axisAnchor: LayoutAnchorType, constant: CGFloat = 0) {
+    init(greaterThanOrEqualTo axisAnchor: LayoutAnchorType, constant: CGFloat = 0, priority: Float = 1000) {
         self.layoutAnchor = axisAnchor
         self.constant = constant
         self.comparibility = 1
+        self.priority = priority
     }
-    init(lessThanOrEqualTo axisAnchor: LayoutAnchorType, constant: CGFloat = 0) {
+    init(lessThanOrEqualTo axisAnchor: LayoutAnchorType, constant: CGFloat = 0, priority: Float = 1000) {
         self.layoutAnchor = axisAnchor
         self.constant = constant
         self.comparibility = -1
+        self.priority = priority
     }
 }
 
 extension NSLayoutYAxisAnchor {
-    func constraint(anchor: LayoutAnchor<NSLayoutYAxisAnchor>) {
+    func constraint(anchor: LayoutAnchor<NSLayoutYAxisAnchor>) -> NSLayoutConstraint? {
+        var layoutContraint: NSLayoutConstraint?
         if let layoutAnchor = anchor.layoutAnchor {
         switch anchor.comparibility {
             case -1:
-                constraint(lessThanOrEqualTo: layoutAnchor, constant: anchor.constant).isActive = true
+                layoutContraint = constraint(lessThanOrEqualTo: layoutAnchor, constant: anchor.constant)
                 break
             case 0:
-                constraint(equalTo: layoutAnchor, constant: anchor.constant).isActive = true
+                layoutContraint = constraint(equalTo: layoutAnchor, constant: anchor.constant)
                 break
             case 1:
-                constraint(greaterThanOrEqualTo: layoutAnchor, constant: anchor.constant).isActive = true
+                layoutContraint = constraint(greaterThanOrEqualTo: layoutAnchor, constant: anchor.constant)
                 break
             default:
                 break
             }
         }
+        if let result = layoutContraint {
+            result.isActive = true
+            return result
+        }
+        return nil
     }
 }
 
 extension NSLayoutXAxisAnchor {
-    func constraint(anchor: LayoutAnchor<NSLayoutXAxisAnchor>) {
+    func constraint(anchor: LayoutAnchor<NSLayoutXAxisAnchor>) -> NSLayoutConstraint? {
+        var layoutContraint: NSLayoutConstraint?
         if let layoutAnchor = anchor.layoutAnchor {
             switch anchor.comparibility {
             case -1:
-                constraint(lessThanOrEqualTo: layoutAnchor, constant: anchor.constant).isActive = true
+                layoutContraint = constraint(lessThanOrEqualTo: layoutAnchor, constant: anchor.constant)
                 break
             case 0:
-                constraint(equalTo: layoutAnchor, constant: anchor.constant).isActive = true
+                layoutContraint = constraint(equalTo: layoutAnchor, constant: anchor.constant)
                 break
             case 1:
-                constraint(greaterThanOrEqualTo: layoutAnchor, constant: anchor.constant).isActive = true
+                layoutContraint = constraint(greaterThanOrEqualTo: layoutAnchor, constant: anchor.constant)
                 break
             default:
                 break
             }
         }
+        if let result = layoutContraint {
+            result.isActive = true
+            return result
+        }
+        return nil
     }
 }
 
 extension NSLayoutDimension {
-    func constraint(anchor: LayoutAnchor<NSLayoutDimension>) {
+    func constraint(anchor: LayoutAnchor<NSLayoutDimension>) -> NSLayoutConstraint? {
+        var layoutContraint: NSLayoutConstraint?
         if let layoutAnchor = anchor.layoutAnchor {
             switch anchor.comparibility {
                 case -1:
-                    constraint(lessThanOrEqualTo: layoutAnchor, constant: anchor.constant).isActive = true
+                    layoutContraint = constraint(lessThanOrEqualTo: layoutAnchor, constant: anchor.constant)
                     break
                 case 0:
-                    constraint(equalTo: layoutAnchor, constant: anchor.constant).isActive = true
+                    layoutContraint = constraint(equalTo: layoutAnchor, constant: anchor.constant)
                     break
                 case 1:
-                    constraint(greaterThanOrEqualTo: layoutAnchor, constant: anchor.constant).isActive = true
+                    layoutContraint = constraint(greaterThanOrEqualTo: layoutAnchor, constant: anchor.constant)
                     break
                 default:
                     break
@@ -107,19 +127,23 @@ extension NSLayoutDimension {
         } else {
             switch anchor.comparibility {
                 case -1:
-                    constraint(lessThanOrEqualToConstant: anchor.constant).isActive = true
+                    layoutContraint = constraint(lessThanOrEqualToConstant: anchor.constant)
                     break
                 case 0:
-                    constraint(equalToConstant: anchor.constant).isActive = true
+                    layoutContraint = constraint(equalToConstant: anchor.constant)
                     break
                 case 1:
-                    constraint(greaterThanOrEqualToConstant: anchor.constant).isActive = true
+                    layoutContraint = constraint(greaterThanOrEqualToConstant: anchor.constant)
                     break
                 default:
                     break
             }
         }
-        
+        if let result = layoutContraint {
+            result.isActive = true
+            return result
+        }
+        return nil
     }
 }
 
@@ -136,30 +160,54 @@ extension UIView {
     ){
         translatesAutoresizingMaskIntoConstraints = false
         if let left = left, let _ = left.layoutAnchor {
-            leftAnchor.constraint(anchor: left)
+            let layoutContraint = leftAnchor.constraint(anchor: left)
+            if left.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(left.priority)
+            }
         }
         if let top = top, let _ = top.layoutAnchor {
-            topAnchor.constraint(anchor: top)
+            let layoutContraint = topAnchor.constraint(anchor: top)
+            if top.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(top.priority)
+            }
         }
         if var right = right, let _ = right.layoutAnchor {
             right.constant = -right.constant
-            rightAnchor.constraint(anchor: right)
+            let layoutContraint = rightAnchor.constraint(anchor: right)
+            if right.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(right.priority)
+            }
         }
         if var bottom = bottom, let _ = bottom.layoutAnchor {
             bottom.constant = -bottom.constant
-            bottomAnchor.constraint(anchor: bottom)
+            let layoutContraint = bottomAnchor.constraint(anchor: bottom)
+            if bottom.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(bottom.priority)
+            }
         }
         if let centerX = centerX, let _ = centerX.layoutAnchor {
-            centerXAnchor.constraint(anchor: centerX)
+            let layoutContraint = centerXAnchor.constraint(anchor: centerX)
+            if centerX.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(centerX.priority)
+            }
         }
         if let centerY = centerY, let _ = centerY.layoutAnchor {
-            centerYAnchor.constraint(anchor: centerY)
+            let layoutContraint = centerYAnchor.constraint(anchor: centerY)
+            if centerY.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(centerY.priority)
+            }
         }
         if let width = width {
-            widthAnchor.constraint(anchor: width)
+            let layoutContraint = widthAnchor.constraint(anchor: width)
+            if width.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(width.priority)
+            }
         }
         if let height = height {
-            heightAnchor.constraint(anchor: height)
+            let layoutContraint = heightAnchor.constraint(anchor: height)
+            if height.priority != 1000 {
+                layoutContraint?.priority = UILayoutPriority(height.priority)
+            }
         }
     }
 }

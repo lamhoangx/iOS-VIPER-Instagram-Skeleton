@@ -17,8 +17,7 @@ extension FeedCollectionViewCell {
         headerContainer.anchor(
             left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
             top: LayoutAnchor(equalTo: topAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+            right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge)
         )
         configurateHeaderContainer(container: headerContainer)
         
@@ -28,8 +27,7 @@ extension FeedCollectionViewCell {
         contentContainer.anchor(
             left: LayoutAnchor(equalTo: leftAnchor),
             top: LayoutAnchor(equalTo: headerContainer.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
-            right: LayoutAnchor(equalTo: rightAnchor),
-            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+            right: LayoutAnchor(equalTo: rightAnchor)
         )
         configurateContentContainer(container: contentContainer)
         // Footer
@@ -39,22 +37,21 @@ extension FeedCollectionViewCell {
             left: LayoutAnchor(equalTo: leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
             top: LayoutAnchor(equalTo: contentContainer.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
             right: LayoutAnchor(equalTo: rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            bottom: LayoutAnchor(equalTo: bottomAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+            bottom: LayoutAnchor(equalTo: bottomAnchor, constant: FeedCollectionViewCell.paddingEdge)
         )
         configurateFooterContainer(container: footerContainer)
     }
     
     private func configurateHeaderContainer(container: UIView) {
-
+        
         //Image profile
         container.addSubview(avatarFeedOwner)
         // layout
         avatarFeedOwner.anchor(
             left: LayoutAnchor(equalTo: container.leftAnchor),
             top: LayoutAnchor(equalTo: container.topAnchor),
-            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
-            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
+            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize, priority: 999),
+            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize, priority: 999)
         )
         avatarFeedOwner.layer.cornerRadius = CGFloat(FeedCollectionViewCell.interfaceButtonSize / 2)
         
@@ -63,14 +60,15 @@ extension FeedCollectionViewCell {
         // layout
         userNameFeedOwner.anchor(
             left: LayoutAnchor(equalTo: avatarFeedOwner.rightAnchor, constant: FeedCollectionViewCell.paddingElement),
-            centerY: LayoutAnchor(equalTo: avatarFeedOwner.centerYAnchor),
-            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
-            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
+            top: LayoutAnchor(equalTo: container.topAnchor),
+            bottom: LayoutAnchor(equalTo: container.bottomAnchor),
+            centerY: LayoutAnchor(equalTo: avatarFeedOwner.centerYAnchor)
         )
         // option button
         container.addSubview(optionsButton)
         // layout
         optionsButton.anchor(
+            top: LayoutAnchor(equalTo: container.topAnchor),
             right: LayoutAnchor(equalTo: container.rightAnchor),
             bottom: LayoutAnchor(equalTo: container.bottomAnchor),
             centerY: LayoutAnchor(equalTo: avatarFeedOwner.centerYAnchor)
@@ -83,8 +81,9 @@ extension FeedCollectionViewCell {
             left: LayoutAnchor(equalTo: container.leftAnchor),
             top: LayoutAnchor(equalTo: container.topAnchor),
             right: LayoutAnchor(equalTo: container.rightAnchor),
-            height: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+            height: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width, priority: 999)
         )
+        
         // Interact button
         let stackHorizontalView = UIStackView(arrangedSubviews: [likeFeedButton, commentFeedButton, sentFeedButton])
         stackHorizontalView.axis = .horizontal
@@ -93,14 +92,16 @@ extension FeedCollectionViewCell {
         container.addSubview(stackHorizontalView)
         stackHorizontalView.anchor(
             left: LayoutAnchor(equalTo: container.leftAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            top: LayoutAnchor(equalTo: imagesFeedContent.bottomAnchor)
+            top: LayoutAnchor(equalTo: imagesFeedContent.bottomAnchor),
+            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize, priority: 999)
         )
         
         container.addSubview(bookmarkFeedButton)
         bookmarkFeedButton.anchor(
             top: LayoutAnchor(equalTo: imagesFeedContent.bottomAnchor),
             right: LayoutAnchor(equalTo: container.rightAnchor, constant: FeedCollectionViewCell.paddingEdge),
-            bottom: LayoutAnchor(equalTo: container.bottomAnchor)
+            bottom: LayoutAnchor(equalTo: container.bottomAnchor),
+            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize, priority: 999)
         )
     }
     private func configurateFooterContainer(container: UIView) {
@@ -124,7 +125,7 @@ extension FeedCollectionViewCell {
             left: LayoutAnchor(equalTo: container.leftAnchor),
             top: LayoutAnchor(equalTo: captionFeed.bottomAnchor, constant: FeedCollectionViewCell.paddingElement),
             right: LayoutAnchor(equalTo: container.rightAnchor),
-            bottom: LayoutAnchor(equalTo: container.bottomAnchor)
+            bottom: LayoutAnchor(equalTo: container.bottomAnchor, priority: 999)
         )
     }
     
@@ -145,8 +146,7 @@ extension FeedCollectionViewCell {
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.anchor(
-            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
-            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
+            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize, priority: 999)
         )
         return button
     }
@@ -159,9 +159,8 @@ extension FeedCollectionViewCell {
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         button.anchor(
-            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize),
-            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize)
-        )
+            width: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize, priority: 999),
+            height: LayoutAnchor(equalToConstant: FeedCollectionViewCell.interfaceButtonSize, priority: 999))
         return button
     }
 }

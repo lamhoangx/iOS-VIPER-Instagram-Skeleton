@@ -119,13 +119,14 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.anchor(
+        anchor(
             left: LayoutAnchor(equalTo: leftAnchor),
             top: LayoutAnchor(equalTo: topAnchor),
             right: LayoutAnchor(equalTo: rightAnchor),
             bottom: LayoutAnchor(equalTo: bottomAnchor),
-            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width)
+            width: LayoutAnchor(equalToConstant: UIScreen.main.bounds.width, priority: 999)
         )
+        
         configurateUI()
     }
     

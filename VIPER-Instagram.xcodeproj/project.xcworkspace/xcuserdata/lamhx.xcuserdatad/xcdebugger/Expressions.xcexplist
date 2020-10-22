@@ -79,6 +79,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FeedCollectionViewFlowLayout.layoutAttributesForItem(at:):FeedCollectionViewFlowLayout.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "layoutAttributes.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
          <PersistentStrings>
             <PersistentString

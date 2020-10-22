@@ -12,7 +12,7 @@ import UIKit
 class UIRefreshableController: UICollectionViewController {
 
     init() {
-        let flowLayout = UICollectionViewFlowLayout()
+        let flowLayout = FeedCollectionViewFlowLayout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         super.init(collectionViewLayout: flowLayout)
     }

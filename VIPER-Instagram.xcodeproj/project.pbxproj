@@ -68,6 +68,7 @@
 		C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953710E2532E35700ED53CA /* FeedViewModel.swift */; };
 		C95371182533730700ED53CA /* UIRefreshableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371172533730700ED53CA /* UIRefreshableController.swift */; };
 		C953712E253439E500ED53CA /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */; };
+		C981C812254167C80015512D /* FeedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C981C811254167C80015512D /* FeedCollectionViewFlowLayout.swift */; };
 		C99F48902538032D007B1A77 /* InstagramDatabasesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F488F2538032D007B1A77 /* InstagramDatabasesManager.swift */; };
 		C99F489525380397007B1A77 /* InstagramAPIsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F489425380397007B1A77 /* InstagramAPIsManager.swift */; };
 		C99F489F2538248C007B1A77 /* CommentFeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F489E2538248C007B1A77 /* CommentFeedModel.swift */; };
@@ -163,6 +164,7 @@
 		C953710E2532E35700ED53CA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		C95371172533730700ED53CA /* UIRefreshableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshableController.swift; sourceTree = "<group>"; };
 		C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		C981C811254167C80015512D /* FeedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		C99F488F2538032D007B1A77 /* InstagramDatabasesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramDatabasesManager.swift; sourceTree = "<group>"; };
 		C99F489425380397007B1A77 /* InstagramAPIsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramAPIsManager.swift; sourceTree = "<group>"; };
 		C99F489E2538248C007B1A77 /* CommentFeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentFeedModel.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			children = (
 				C95370782531AFEE00ED53CA /* Extensions.swift */,
 				C95371172533730700ED53CA /* UIRefreshableController.swift */,
+				C981C811254167C80015512D /* FeedCollectionViewFlowLayout.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				C9A06CC12538405C00B0AE73 /* DummyData.swift in Sources */,
 				C95370FB2531C06400ED53CA /* LoginDataManager.swift in Sources */,
 				C953708F2531BC7400ED53CA /* FeedRouter.swift in Sources */,
+				C981C812254167C80015512D /* FeedCollectionViewFlowLayout.swift in Sources */,
 				C95370EB2531C04C00ED53CA /* TimelineProtocol.swift in Sources */,
 				C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */,
 				C95370902531BC7400ED53CA /* FeedInteractor.swift in Sources */,
