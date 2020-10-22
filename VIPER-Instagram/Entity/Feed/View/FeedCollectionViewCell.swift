@@ -17,8 +17,8 @@ class FeedCollectionViewCell: UICollectionViewCell {
     public static let captionTest = ""
     //
     
-    // Constraint size
-    private var feedViewModel: FeedViewModel?
+    private var indentifier: IndexPath?
+    private var delegate: FeedCellDelegate?
     
     // Header container
     // Avatar user
@@ -130,8 +130,9 @@ class FeedCollectionViewCell: UICollectionViewCell {
         configurateUI()
     }
     
-    func bindFeedViewModel(feedViewModel: FeedViewModel) {
-        self.feedViewModel = feedViewModel
+    func bindFeedViewModel(indentifier: IndexPath, feedViewModel: FeedViewModel, delegate: FeedCellDelegate) {
+        self.indentifier = indentifier
+        self.delegate = delegate
         // binding data
         if let avt = feedViewModel.avatarUrl {
             avatarFeedOwner.loadImage(withUrl: avt)
@@ -141,15 +142,15 @@ class FeedCollectionViewCell: UICollectionViewCell {
             imagesFeedContent.loadImage(withUrl: imgContent)
         }
         
-        numLikesFeedInfo.text = "\(feedViewModel.likesNumber! as UInt64) likes"
+        numLikesFeedInfo.text = "\(feedViewModel.likesNumber as UInt64) likes"
         captionFeed.text = feedViewModel.caption
         feedTime.text = "\(feedViewModel.timePost! as UInt64) years ago"
-        if feedViewModel.isLike! {
+        if feedViewModel.isLike {
             likeFeedButton.setImage(#imageLiteral(resourceName: "ActivitySelected"), for: .normal)
         } else {
             likeFeedButton.setImage(#imageLiteral(resourceName: "Activity"), for: .normal)
         }
-        if feedViewModel.isBookmark! {
+        if feedViewModel.isBookmark {
             bookmarkFeedButton.setImage(#imageLiteral(resourceName: "bookmark_selected"), for: .normal)
         } else {
             bookmarkFeedButton.setImage(#imageLiteral(resourceName: "bookmark"), for: .normal)
@@ -162,27 +163,59 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     // Func to handle click
     @objc func userInfoFeedOwnerTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.userInfoFeedOwnerTapped(feedIndentifier: indentifier!)
         print("userInfoTapped")
     }
     @objc func optionsButtonTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.optionsButtonTapped(feedIndentifier: indentifier!)
         print("optionsTapped")
     }
     @objc func imagesFeedContentDoubleTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.likeFeedButtonTapped(feedIndentifier: indentifier!)
         print("feedImageContentDoubleTapped")
     }
     @objc func likeFeedButtonTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.likeFeedButtonTapped(feedIndentifier: indentifier!)
         print("likeButtonTapped")
     }
     @objc func commentFeedButtonTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.commentFeedButtonTapped(feedIndentifier: indentifier!)
         print("commentButtonTapped")
     }
     @objc func sentFeedButtonTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.sentFeedButtonTapped(feedIndentifier: indentifier!)
         print("sentButtonTapped")
     }
     @objc func bookmarkFeedButtonTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.bookmarkFeedButtonTapped(feedIndentifier: indentifier!)
         print("bookMarkButtonTapped")
     }
     @objc func numLikesFeedInfoTapped() {
+        guard (indentifier != nil) else {
+            return
+        }
+        delegate?.numLikesFeedInfoTapped(feedIndentifier: indentifier!)
         print("likesInfoTapped")
     }
     

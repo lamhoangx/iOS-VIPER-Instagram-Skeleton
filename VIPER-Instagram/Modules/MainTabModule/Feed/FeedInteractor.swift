@@ -8,7 +8,7 @@
 import Foundation
 
 class FeedInteractor: FeedInteractorProtocol {
-    
+
     internal weak var presenter: FeedInteractorDelegate?
     internal var dataManager: FeedDataManagerProtocol?
     
@@ -47,5 +47,18 @@ class FeedInteractor: FeedInteractorProtocol {
         )
     }
 
+    func updateLikeStatus(feedId: UInt64, status: Bool) {
+        if dataManager?.updateLikeStatus(feedId: feedId, status: status) == true {
+            
+        }
+    }
+    
+    func updateBookmarkStatus(feedId: UInt64, status: Bool) {
+        if dataManager?.updateBookmarkStatus(feedId: feedId, status: status) == true {
+            
+        }
+    }
+    
+    
 }
 

@@ -16,9 +16,9 @@ class FeedModel {
     var avatarUrlOwner: String?
     
     var imagesUrlFeed: [String]?
-    var isBookmark: Bool?
+    var isBookmark: Bool = false
     var comments: [CommentFeedModel]?
-    var isLike: Bool?
+    var isLike: Bool = false
     var likeInfo: LikeFeedInfo?
     var caption: String?
     var timePost: UInt64 = 0

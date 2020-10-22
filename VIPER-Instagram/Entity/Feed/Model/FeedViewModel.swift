@@ -14,9 +14,9 @@ class FeedViewModel {
     var userName: String?
     var avatarUrl: String?
     var imagesUrlFeed: String? // support 1 pic
-    var isBookmark: Bool?
-    var isLike: Bool?
-    var likesNumber: UInt64?
+    var isBookmark: Bool = false
+    var isLike: Bool = false
+    var likesNumber: UInt64 = 0
     var caption: String?
     var timePost: UInt64?
     // comments is coming
@@ -32,7 +32,7 @@ class FeedViewModel {
         feedViewModel.imagesUrlFeed = feedModel.imagesUrlFeed![0] // support first pic
         feedViewModel.isBookmark = feedModel.isBookmark
         feedViewModel.isLike = feedModel.isLike
-        feedViewModel.likesNumber = feedModel.likeInfo?.likeNumber
+        feedViewModel.likesNumber = feedModel.likeInfo?.likeNumber ?? 0
         feedViewModel.caption = feedModel.caption
         feedViewModel.timePost = feedModel.timePost
         

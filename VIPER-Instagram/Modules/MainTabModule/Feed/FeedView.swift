@@ -11,7 +11,7 @@ import UIKit
 private let feedCellIdentifer = "FeelViewCell"
 
 class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, FeedViewProtocol {
-
+    
     var presenter: FeedPresenterProtocol?
 
     override func viewDidLoad() {
@@ -23,10 +23,6 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
         
         presenter?.viewDidLoad()
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     private func setupNavigationBar() {
@@ -49,8 +45,7 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
     }
     
     @objc override func handleActionRefreshControl() {
-        endRefreshControl()
-        collectionView?.reloadData()
+        presenter?.refresh()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -65,7 +60,7 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: feedCellIdentifer, for: indexPath) as! FeedCollectionViewCell
         if let presenter = presenter {
-            cell.bindFeedViewModel(feedViewModel: presenter.getFeed(at: indexPath))
+            cell.bindFeedViewModel(indentifier: indexPath, feedViewModel: presenter.getFeed(at: indexPath), delegate: self)
         }
         return cell
     }
@@ -73,12 +68,48 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
 
 // MARK: Presenter -> View
 extension FeedView: FeedPresenterDelegate {
+    func reloadData() {
+        collectionView?.reloadData()
+        endRefreshControl()
+    }
+    
     func feedDidPost(_ feedViewModel: FeedViewModel) {
         collectionView?.reloadData()
     }
     
     func presenterDidLoad() {
         dismissUILazyLoading()
+    }
+}
+
+// FeedCellDelegate
+extension FeedView: FeedCellDelegate {
+    func userInfoFeedOwnerTapped(feedIndentifier: IndexPath) {
+        presenter?.openUserProfile(feedIndentifier: feedIndentifier)
+    }
+    
+    func optionsButtonTapped(feedIndentifier: IndexPath) {
+        
+    }
+    
+    func likeFeedButtonTapped(feedIndentifier: IndexPath) {
+        presenter?.fireLikeFeedAction(feedIndentifier: feedIndentifier)
+    }
+    
+    func commentFeedButtonTapped(feedIndentifier: IndexPath) {
+        presenter?.openComments(feedIndentifier: feedIndentifier)
+    }
+    
+    func sentFeedButtonTapped(feedIndentifier: IndexPath) {
+        presenter?.forwardFeed(feedIndentifier: feedIndentifier)
+    }
+    
+    func bookmarkFeedButtonTapped(feedIndentifier: IndexPath) {
+        presenter?.fireBookmarkFeedAction(feedIndentifier: feedIndentifier)
+    }
+    
+    func numLikesFeedInfoTapped(feedIndentifier: IndexPath) {
+        
     }
     
 }

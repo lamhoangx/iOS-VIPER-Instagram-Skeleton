@@ -26,6 +26,7 @@ protocol FeedPresenterDelegate: class {
     //func for presenter -> view
     func presenterDidLoad()
     func feedDidPost(_ feedViewModel: FeedViewModel)
+    func reloadData()
 }
 
 // MARK: Presenter
@@ -38,7 +39,14 @@ protocol FeedPresenterProtocol: class {
     func viewDidLoad()
     func getFeed(at index: IndexPath) -> FeedViewModel
     func getFeedCount() -> Int
-
+    func refresh()
+    
+    // action
+    func openUserProfile(feedIndentifier: IndexPath)
+    func fireLikeFeedAction(feedIndentifier: IndexPath)
+    func openComments(feedIndentifier: IndexPath)
+    func forwardFeed(feedIndentifier: IndexPath)
+    func fireBookmarkFeedAction(feedIndentifier: IndexPath)
 }
 // Extends by presenter to receive notifies from interactor
 protocol FeedInteractorDelegate: class {
@@ -56,7 +64,8 @@ protocol FeedInteractorProtocol: class {
     // func for presenter -> interactor
     func loadMoreFeeds()
     func reloadTimelines()
-    
+    func updateLikeStatus(feedId: UInt64, status: Bool)
+    func updateBookmarkStatus(feedId: UInt64, status: Bool)
 }
 
 // MARK: DataManager
@@ -68,4 +77,6 @@ protocol FeedDataManagerProtocol: class {
     func fetchFeeds(from index: CLong, limit: Int) -> [FeedModel]
     // Post Feed
     func postFeed(feed: FeedModel, success: (() -> Void?), failure: ((_ error: Int) -> Void?))
+    func updateLikeStatus(feedId: UInt64, status: Bool) -> Bool
+    func updateBookmarkStatus(feedId: UInt64, status: Bool) -> Bool
 }

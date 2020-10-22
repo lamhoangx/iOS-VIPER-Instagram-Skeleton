@@ -8,6 +8,17 @@
 import Foundation
 
 class FeedDataManager: FeedDataManagerProtocol {
+    // update server via API
+    
+    
+    func updateLikeStatus(feedId: UInt64, status: Bool) -> Bool {
+        return InstagramDatabasesManager.shared.updateLikeStatus(feedId: feedId, status: status)
+    }
+    
+    func updateBookmarkStatus(feedId: UInt64, status: Bool) -> Bool {
+        return InstagramDatabasesManager.shared.updateBookmarkStatus(feedId: feedId, status: status)
+    }
+    
     func reloadFeeds() -> [FeedModel] {
         return InstagramDatabasesManager.shared.getTimelineInit()
     }

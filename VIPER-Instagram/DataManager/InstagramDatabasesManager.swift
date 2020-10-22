@@ -19,5 +19,25 @@ class InstagramDatabasesManager {
     
     private let fakeFeeds: [FeedModel] = initFakeFeeds()
     
+    func updateLikeStatus(feedId: UInt64, status: Bool) -> Bool {
+        for item in fakeFeeds {
+            if item.feedId == feedId {
+                item.isLike = status
+                return true
+            }
+        }
+        return false
+    }
+    
+    func updateBookmarkStatus(feedId: UInt64, status: Bool) -> Bool {
+        for item in fakeFeeds {
+            if item.feedId == feedId {
+                item.isBookmark = status
+                return true
+            }
+        }
+        return false
+    }
+    
 }
 
