@@ -3,32 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #3 in closure #1 in ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
+         contextName = "SearchView.setLeftAlignedNavigationItemTitle(text:color:margin:):SearchView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "data?.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MainTabView.viewDidLoad():MainTabView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "presenter">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #2 in UIImageView.loadImage(withUrl:):ImageLoader.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SearchView.setupNavigationBar():SearchView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "navigationController?.navigationBar.frame.width">
-            </PersistentString>
-            <PersistentString
-               value = "navigationController?.navigationBar.frame.height">
+               value = "navigationItem.leftBarButtonItem?.width">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -37,17 +15,6 @@
          <PersistentStrings>
             <PersistentString
                value = "stackHorizontalView">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in FeedPresenter.receiveFeeds(feeds:):FeedPresenter.swift">
-      </ContextState>
-      <ContextState
-         contextName = "FeedPresenter.receiveFeeds(feeds:):FeedPresenter.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "$0.key &gt; $1.key">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -63,47 +30,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static FeedCollectionViewCell.getImageLabelButton(text:):FeedCollectionViewCell.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "button.imageView">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "__pthread_kill:(null)">
       </ContextState>
       <ContextState
-         contextName = "MainTabPresenter.shouldTabSelect(viewController:):MainTabPresenter.swift">
+         contextName = "closure #1 in closure #2 in ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
          <PersistentStrings>
             <PersistentString
-               value = "viewNavControllers.firstIndex(of: viewController as! UINavigationController)">
+               value = "imageCache.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MainTabView.tabBarController(_:shouldSelect:):MainTabView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "tabBarController.selectedIndex">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "FeedCollectionViewFlowLayout.layoutAttributesForItem(at:):FeedCollectionViewFlowLayout.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "layoutAttributes.frame">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "url == nil">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #1 in FeedPresenter.receiveFeeds(feeds:):FeedPresenter.swift">
       </ContextState>
       <ContextState
          contextName = "FeedView.viewDidLoad():FeedView.swift">
@@ -117,18 +55,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SearchView.setLeftAlignedNavigationItemTitle(text:color:margin:):SearchView.swift">
+         contextName = "FeedPresenter.receiveFeeds(feeds:):FeedPresenter.swift">
          <PersistentStrings>
             <PersistentString
-               value = "navigationItem.leftBarButtonItem?.width">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in closure #2 in ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "imageCache.count">
+               value = "$0.key &gt; $1.key">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -141,10 +71,88 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #3 in closure #1 in ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "data?.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static FeedCollectionViewCell.getImageLabelButton(text:):FeedCollectionViewCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "button.imageView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SearchView.setupNavigationBar():SearchView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "navigationController?.navigationBar.frame.width">
+            </PersistentString>
+            <PersistentString
+               value = "navigationController?.navigationBar.frame.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainTabView.viewDidLoad():MainTabView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presenter">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainTabView.tabBarController(_:shouldSelect:):MainTabView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tabBarController.selectedIndex">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UserProfileView.collectionView(_:layout:referenceSizeForHeaderInSection:):UserProfileView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "collectionView.visibleSupplementaryViews(ofKind: UICollectionView.elementKindSectionHeader).first">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "url == nil">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in ImageLoader.loadImage(withUrl:target:):ImageLoader.swift">
          <PersistentStrings>
             <PersistentString
                value = "URL(string: urlString)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #2 in UIImageView.loadImage(withUrl:):ImageLoader.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MainTabPresenter.shouldTabSelect(viewController:):MainTabPresenter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewNavControllers.firstIndex(of: viewController as! UINavigationController)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FeedCollectionViewFlowLayout.layoutAttributesForItem(at:):FeedCollectionViewFlowLayout.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "layoutAttributes.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

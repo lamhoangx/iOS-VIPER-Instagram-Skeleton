@@ -68,6 +68,8 @@
 		C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953710E2532E35700ED53CA /* FeedViewModel.swift */; };
 		C95371182533730700ED53CA /* UIRefreshableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95371172533730700ED53CA /* UIRefreshableController.swift */; };
 		C953712E253439E500ED53CA /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */; };
+		C97634DF25449697001A35CD /* UserInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97634DE25449697001A35CD /* UserInfoCollectionViewCell.swift */; };
+		C97634E7254497F4001A35CD /* ComponentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97634E6254497F4001A35CD /* ComponentUtil.swift */; };
 		C981C812254167C80015512D /* FeedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C981C811254167C80015512D /* FeedCollectionViewFlowLayout.swift */; };
 		C981C818254170320015512D /* FeedCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C981C817254170320015512D /* FeedCellDelegate.swift */; };
 		C99F48902538032D007B1A77 /* InstagramDatabasesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99F488F2538032D007B1A77 /* InstagramDatabasesManager.swift */; };
@@ -165,6 +167,8 @@
 		C953710E2532E35700ED53CA /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		C95371172533730700ED53CA /* UIRefreshableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRefreshableController.swift; sourceTree = "<group>"; };
 		C953712D253439E500ED53CA /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		C97634DE25449697001A35CD /* UserInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		C97634E6254497F4001A35CD /* ComponentUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentUtil.swift; sourceTree = "<group>"; };
 		C981C811254167C80015512D /* FeedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		C981C817254170320015512D /* FeedCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellDelegate.swift; sourceTree = "<group>"; };
 		C99F488F2538032D007B1A77 /* InstagramDatabasesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramDatabasesManager.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 			children = (
 				C9D694B12539FFB8006E2A2C /* ImageLoader */,
 				C953707D2531B27E00ED53CA /* ViewUtils.swift */,
+				C97634E6254497F4001A35CD /* ComponentUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -449,6 +454,22 @@
 			path = extension;
 			sourceTree = "<group>";
 		};
+		C97634DC2544961D001A35CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C97634DE25449697001A35CD /* UserInfoCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C97634DD25449636001A35CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C99F48A92538259E007B1A77 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C981C81625416FED0015512D /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,7 +501,8 @@
 		C99F48A825382585007B1A77 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				C99F48A92538259E007B1A77 /* UserModel.swift */,
+				C97634DD25449636001A35CD /* Model */,
+				C97634DC2544961D001A35CD /* View */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -556,7 +578,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					C9536FDC2531873500ED53CA = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -629,6 +651,7 @@
 				C95370FB2531C06400ED53CA /* LoginDataManager.swift in Sources */,
 				C953708F2531BC7400ED53CA /* FeedRouter.swift in Sources */,
 				C981C812254167C80015512D /* FeedCollectionViewFlowLayout.swift in Sources */,
+				C97634E7254497F4001A35CD /* ComponentUtil.swift in Sources */,
 				C95370EB2531C04C00ED53CA /* TimelineProtocol.swift in Sources */,
 				C953710F2532E35700ED53CA /* FeedViewModel.swift in Sources */,
 				C95370902531BC7400ED53CA /* FeedInteractor.swift in Sources */,
@@ -674,6 +697,7 @@
 				C9537024253195BE00ED53CA /* MainTabInteractor.swift in Sources */,
 				C95370C72531BCFE00ED53CA /* NotificationView.swift in Sources */,
 				C95370D82531C03D00ED53CA /* UserProfilePresenter.swift in Sources */,
+				C97634DF25449697001A35CD /* UserInfoCollectionViewCell.swift in Sources */,
 				C95370B42531BCE100ED53CA /* PostFeedInteractor.swift in Sources */,
 				C95370922531BC7400ED53CA /* FeedProtocol.swift in Sources */,
 				C953712E253439E500ED53CA /* FeedCollectionViewCell.swift in Sources */,
@@ -786,7 +810,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -841,7 +865,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -860,7 +884,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZCMAC9SVY;
 				INFOPLIST_FILE = "VIPER-Instagram/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -882,7 +906,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KZCMAC9SVY;
 				INFOPLIST_FILE = "VIPER-Instagram/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

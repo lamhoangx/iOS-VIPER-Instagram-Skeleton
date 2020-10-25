@@ -10,9 +10,6 @@ import UIKit
 
 class FeedCollectionViewCell: UICollectionViewCell {
     //static field
-    public static let interfaceButtonSize: CGFloat = 40
-    public static let paddingEdge: CGFloat = 12
-    public static let paddingElement: CGFloat = 8
     public static let feedImageContentHeight: CGFloat = 300
     public static let captionTest = ""
     //
@@ -23,7 +20,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     // Header container
     // Avatar user
     lazy var avatarFeedOwner: UIImageView = {
-        let image = FeedCollectionViewCell.newImageView()
+        let image = ComponentUtil.newAspectFillImageView()
         // registry action
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userInfoFeedOwnerTapped))
         image.addGestureRecognizer(tapGestureRecognizer)
@@ -31,14 +28,14 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }()
     // Username
     lazy var userNameFeedOwner: UIButton = {
-        let userName = FeedCollectionViewCell.newLabelButton(text: "UserName")
+        let userName = ComponentUtil.newBoldLabelButton(text: "UserName")
         // registry action
         userName.addTarget(self, action: #selector(userInfoFeedOwnerTapped), for: .touchUpInside)
         return userName
     }()
     // Option button
     lazy var optionsButton: UIButton = {
-        let labelButton = FeedCollectionViewCell.newLabelButton(text: "•••")
+        let labelButton = ComponentUtil.newBoldLabelButton(text: "•••")
         labelButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         // registry action
         labelButton.addTarget(self, action: #selector(optionsButtonTapped), for: .touchUpInside)
@@ -47,7 +44,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     //
     // Content containter
     lazy var imagesFeedContent: UIImageView = {
-        let image = FeedCollectionViewCell.newImageView()
+        let image = ComponentUtil.newAspectFillImageView()
         // registry action
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imagesFeedContentDoubleTapped))
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
@@ -56,28 +53,28 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }()
     // Like button
     lazy var likeFeedButton: UIButton = {
-        let button = FeedCollectionViewCell.newButton()
+        let button = ComponentUtil.newButton()
         button.setImage(#imageLiteral(resourceName: "Activity"), for: .normal)
         button.addTarget(self, action: #selector(likeFeedButtonTapped), for: .touchUpInside)
         return button
     }()
     // Comment button
     lazy var commentFeedButton: UIButton = {
-        let button = FeedCollectionViewCell.newButton()
+        let button = ComponentUtil.newButton()
         button.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
         button.addTarget(self, action: #selector(commentFeedButtonTapped), for: .touchUpInside)
         return button
     }()
     // Sent button
     lazy var sentFeedButton: UIButton = {
-        let button = FeedCollectionViewCell.newButton()
+        let button = ComponentUtil.newButton()
         button.setImage( #imageLiteral(resourceName: "send"), for: .normal)
         button.addTarget(self, action: #selector(sentFeedButtonTapped), for: .touchUpInside)
         return button
     }()
     // Bookmark
     lazy var bookmarkFeedButton: UIButton = {
-        let button = FeedCollectionViewCell.newButton()
+        let button = ComponentUtil.newButton()
         button.setImage( #imageLiteral(resourceName: "bookmark"), for: .normal)
         button.addTarget(self, action: #selector(bookmarkFeedButtonTapped), for: .touchUpInside)
         return button

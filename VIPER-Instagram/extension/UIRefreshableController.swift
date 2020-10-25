@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: Support RefreshControl & UI lazy loading
-class UIRefreshableController: UICollectionViewController {
+class UIRefreshableController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     init() {
         let flowLayout = FeedCollectionViewFlowLayout()

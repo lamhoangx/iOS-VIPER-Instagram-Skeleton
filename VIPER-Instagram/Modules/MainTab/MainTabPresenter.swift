@@ -18,7 +18,7 @@ class MainTabPresenter: MainTabPresenterProtocol {
     let searchView = SearchRouter.buildSearchView()
 //    let postFeedView = PostFeedRouter.buildPostFeedView()
     let notificationView = NotificationRouter.buildNotificationView()
-    let userProfile = UIViewController() //TODO: coming soon
+    let userProfile = UserProfileRouter.buildUserProfileView()
     
     let viewNavControllers: [UINavigationController]
     

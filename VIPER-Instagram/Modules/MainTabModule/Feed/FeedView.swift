@@ -10,7 +10,7 @@ import UIKit
 
 private let feedCellIdentifer = "FeelViewCell"
 
-class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, FeedViewProtocol {
+class FeedView: UIRefreshableController, FeedViewProtocol {
     
     var presenter: FeedPresenterProtocol?
 
@@ -47,8 +47,10 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
     @objc override func handleActionRefreshControl() {
         presenter?.refresh()
     }
+}
 
-    // MARK: - UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
+extension FeedView {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -63,6 +65,10 @@ class FeedView: UIRefreshableController, UICollectionViewDelegateFlowLayout, Fee
             cell.bindFeedViewModel(indentifier: indexPath, feedViewModel: presenter.getFeed(at: indexPath), delegate: self)
         }
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        // Fetch More
     }
 }
 
@@ -82,7 +88,7 @@ extension FeedView: FeedPresenterDelegate {
     }
 }
 
-// FeedCellDelegate
+// MARK: Handle action from FeedCell
 extension FeedView: FeedCellDelegate {
     func userInfoFeedOwnerTapped(feedIndentifier: IndexPath) {
         presenter?.openUserProfile(feedIndentifier: feedIndentifier)
